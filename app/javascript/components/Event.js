@@ -2,15 +2,15 @@ import React from "react"
 import PropTypes from "prop-types"
 
 
-
-class Events extends React.Component {
+class Event extends React.Component {
   render () {
+    
     return (
       <React.Fragment>
-        <h1>Events</h1>
+       <h1>Events</h1>
       </React.Fragment>
     );
   }
 }
 
-export default Events
+export default Event

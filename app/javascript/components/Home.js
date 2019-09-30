@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Event from "./Event"
 import { Nav, Navbar, NavItem, NavLink, NavbarBrand } from 'reactstrap'
 
 
@@ -21,7 +22,7 @@ class Home extends React.Component {
           <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
             <Nav>
               <NavItem>
-                <NavLink href = './Events' >Events</NavLink>
+                <NavLink href ="/Event">Events</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/users/sign_up">Sign Up</NavLink>
@@ -31,8 +32,13 @@ class Home extends React.Component {
               </NavItem>
             </Nav>
         </Navbar>
-      
+        
+        
+          
+        
       </React.Fragment>
+      
+      
     );
   }
 }

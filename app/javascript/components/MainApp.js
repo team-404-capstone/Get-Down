@@ -24,7 +24,7 @@ class MainApp extends React.Component {
                       <a href={sign_out_route}>Sign Out</a>
                     </div>
                   }
-                  <Route component = { Events } path = './Events' />
+                  
                 
                 
             {!logged_in &&
@@ -33,6 +33,7 @@ class MainApp extends React.Component {
               </div>
             }
             
+            <Route path = './Events' component = {Events} />
             
         </BrowserRouter>
       </React.Fragment>

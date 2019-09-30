@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Nav, NavItem, NavLink } from 'reactstrap'
 
 
 class Home extends React.Component {
@@ -14,7 +15,7 @@ class Home extends React.Component {
       <React.Fragment>
       <h1>Get Down</h1>
       <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-2">
-      	<a class="navbar-brand" href="#">Light text</a>
+      	<a class="navbar-brand" href="./events">Light text</a>
       	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       		<span class="navbar-toggler-icon"></span>
       	</button>
@@ -33,7 +34,7 @@ class Home extends React.Component {
       			<li class="nav-item">
                 <a class="nav-link" href="/users/sign_up">Sign Up</a>
                 <a class="nav-link" href={sign_in_route}>Log In</a>
-                </li>
+            </li>
       		</ul>
       	</div>
       </nav>

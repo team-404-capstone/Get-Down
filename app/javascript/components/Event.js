@@ -8,7 +8,8 @@ class Event extends React.Component {
     const {
       events,
       getEvent,
-      deleteEvent
+      deleteEvent,
+      editEvent
     } = this.props
     
     return (
@@ -41,7 +42,7 @@ class Event extends React.Component {
                 {events.map((event, index) => {
                   return(
                    <ListGroupItem key = {index}>{event.name} | {event.date} | {event.time} | {event.description} 
-                      <Button color = 'secondary'>Edit Event</Button> 
+                      <Button color = 'secondary' href = '/EditEvent'>Edit Event</Button> 
                       <Button color = 'warning' onClick = {() => deleteEvent(event.id)}>Delete Event</Button>
                    </ListGroupItem>
                   )

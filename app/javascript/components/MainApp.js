@@ -7,12 +7,14 @@ import {BrowserRouter,
 } from 'react-router-dom'
 import Home from './Home'
 import Event from './Event'
+import NewEvent from "./NewEvent"
 
 class MainApp extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      events: []
+      events: [],
+      success: false
     }
     this.getEvent()
   }
@@ -60,6 +62,13 @@ class MainApp extends React.Component {
           <Route path = '/Event' render = {(routeProps) => {
             return(
               <Event {...routeProps} events={this.state.events} createEvent = {this.createEvent} />
+              )
+            }} 
+          />
+          
+          <Route path = '/NewEvent' render = {(routeProps) => {
+            return(
+              <NewEvent {...routeProps} createEvent = {this.createEvent} success = {this.state.success} />
               )
             }} 
           />

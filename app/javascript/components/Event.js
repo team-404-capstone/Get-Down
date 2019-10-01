@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Button, ListGroup, ListGroupItem } from 'reactstrap'
+import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Button, ListGroup, ListGroupItem, Jumbotron, Container} from 'reactstrap'
 
 
 class Event extends React.Component {
@@ -12,6 +12,7 @@ class Event extends React.Component {
     
     return (
       <React.Fragment>
+      <Container>
        <Navbar color = 'light'>
           <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
             <Nav>
@@ -26,19 +27,26 @@ class Event extends React.Component {
               </NavItem>
             </Nav>
         </Navbar>
-       <h1>Events</h1>
-         <br/>
-          <Button color = 'primary'>Create Event</Button>
-         <br/>
-         <br/>
-          <ListGroup>
-            {events.map((event, index) => {
-              return(
-               <ListGroupItem key = {index}>{event.name} <Button color = 'secondary'>Edit Event</Button> <Button color = 'warning'>Delete Event</Button></ListGroupItem>
-              )
-           })
-           }
-          </ListGroup>
+        <br/>
+        <br/>
+        <Jumbotron>
+          <Container>
+            <h1>Events</h1>
+             <br/>
+              <Button color = 'primary' href = '/NewEvent'>Create Event</Button>
+             <br/>
+             <br/>
+              <ListGroup>
+                {events.map((event, index) => {
+                  return(
+                   <ListGroupItem key = {index}>{event.name} | {event.date} | {event.time} | {event.description} <Button color = 'secondary'>Edit Event</Button> <Button color = 'warning'>Delete Event</Button></ListGroupItem>
+                  )
+               })
+               }
+              </ListGroup>
+            </Container>
+          </Jumbotron>
+      </Container>
       </React.Fragment>
     );
   }

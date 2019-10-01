@@ -12,12 +12,8 @@ class EventsController < ApplicationController
     end
     
     def create
-        event = current_user.Event.create(post_params)
-        if event.valid?
-            render json: event
-        else
-            render json: event.errors, status: :unprocessable_entity
-        end
+        event = Event.create post_params
+        render json: event, status: 201
     end
     
     def destroy

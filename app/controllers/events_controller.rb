@@ -22,7 +22,7 @@ class EventsController < ApplicationController
         p event
         render json: event, status: 200
     end
-    
+
   def destroy
       event = currrent_user.event.find params[:id]
       if event.destroy

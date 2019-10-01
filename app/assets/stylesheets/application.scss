@@ -12,8 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ 
  */
  /*! Themestr.app `Tequila` Bootstrap 4.3.1 theme */
+ // @import 'bootstrap';
  @import url(https://fonts.googleapis.com/css?family=Voltaire:200,300,400,700);
  /*!
   * Bootstrap v4.1.1 (https://getbootstrap.com/)
@@ -78,7 +80,7 @@
    line-height: 1.5;
    color: #212529;
    text-align: left;
-   background-color: #fff; }
+   background-color: #6c757d; }
 
  [tabindex="-1"]:focus {
    outline: 0 !important; }

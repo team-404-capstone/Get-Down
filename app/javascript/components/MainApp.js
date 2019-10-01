@@ -9,6 +9,7 @@ import Home from './Home'
 import Event from './Event'
 import NewEvent from "./NewEvent"
 import EditEvent from "./EditEvent"
+import MyMap from "./LeafletMap"
 
 class MainApp extends React.Component {
   constructor(props){
@@ -87,6 +88,7 @@ class MainApp extends React.Component {
         <BrowserRouter>
           <Switch>
           
+          <Route path = '/leafletmap' component = {MyMap} />
                 
           <Route path = '/Event' render = {(routeProps) => {
             return(

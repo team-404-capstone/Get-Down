@@ -4,8 +4,32 @@ import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Button, ListGroup, ListGrou
 
 
 class EditEvent extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      form: {
+        name: "",
+        date: "",
+        time: "",
+        lat: "",
+        lng: "",
+        description: ""
+      }
+    }
+  }
   
+  onChange = (e) => {
+    let {form} = this.state
+    form[e.target.name] = e.target.value
+    this.setState({form: form})
+  }
   
+  localSubmit = (el) => {
+    el.preventDefault(),
+    this.setState({success: true})
+    this.props.editEvent(this.state.form)
+    window.location.href = '/Event'
+  }
   
   render () {
     return (
@@ -25,6 +49,7 @@ class EditEvent extends React.Component {
             <br/>
             <br/>
             <Jumbotron>
+            <Container>
                <h1>Edit Event</h1>
                 <Form>
                   <FormGroup>
@@ -53,6 +78,7 @@ class EditEvent extends React.Component {
                   </FormGroup>
                   <Button onClick = {this.localSubmit} >Edit Event</Button>
                 </Form>
+            </Container>
             </Jumbotron>
       </Container>
       </React.Fragment>

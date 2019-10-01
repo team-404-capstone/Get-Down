@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     end
     
     def update
-        event = Event.find params[:id].update(post_params)
+        event = Event.update post_params
         render json: event
     end
     

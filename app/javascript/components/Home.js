@@ -13,26 +13,26 @@ class Home extends React.Component {
     return (
       <React.Fragment>
       <h1>Get Down</h1>
-      <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-2">
-      	<a class="navbar-brand" href="#">Light text</a>
-      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      		<span class="navbar-toggler-icon"></span>
+      <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-2">
+      	<a className="navbar-brand" href="#">Light text</a>
+      	<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      		<span className="navbar-toggler-icon"></span>
       	</button>
-      	<div class="collapse navbar-collapse" id="navbarColor02">
-      		<ul class="navbar-nav ml-auto">
-      			<li class="nav-item">
-      				<a class="nav-link" href="#" title="Current breakpoint tier">
+      	<div className="collapse navbar-collapse" id="navbarColor02">
+      		<ul className="navbar-nav ml-auto">
+      			<li className="nav-item">
+      				<a className="nav-link" href="#" title="Current breakpoint tier">
       					Tier
-      					<span class="d-xl-inline d-none">XL</span>
-      					<span class="d-lg-inline d-xl-none d-none">LG</span>
-      					<span class="d-md-inline d-lg-none d-none">MD</span>
-      					<span class="d-sm-inline d-md-none d-none">SM</span>
-      					<span class="d-inline d-sm-none">XS</span>
+      					<span className="d-xl-inline d-none">XL</span>
+      					<span className="d-lg-inline d-xl-none d-none">LG</span>
+      					<span className="d-md-inline d-lg-none d-none">MD</span>
+      					<span className="d-sm-inline d-md-none d-none">SM</span>
+      					<span className="d-inline d-sm-none">XS</span>
       				</a>
       			</li>
-      			<li class="nav-item">
-                <a class="nav-link" href="/users/sign_up">Sign Up</a>
-                <a class="nav-link" href={sign_in_route}>Log In</a>
+      			<li className="nav-item">
+                <a className="nav-link" href="/users/sign_up">Sign Up</a>
+                <a className="nav-link" href={sign_in_route}>Log In</a>
                 </li>
       		</ul>
       	</div>

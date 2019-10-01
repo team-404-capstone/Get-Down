@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {BrowserRouter, Route, Link } from 'react-router-dom'
 import Home from './Home'
+import MyMap from './LeafletMap'
 
 class MainApp extends React.Component {
   render () {
@@ -10,7 +11,6 @@ class MainApp extends React.Component {
       sign_in_route,
       sign_out_route
     } = this.props
-
     return (
       <React.Fragment>
       <BrowserRouter>
@@ -18,6 +18,7 @@ class MainApp extends React.Component {
           return(
           <Home {...routeProps} sign_in_route={this.props.sign_in_route} />)}
       }></Route>
+      <Route path='/leafletmap' component={MyMap}/>
         {logged_in &&
           <div>
             <a href={sign_out_route}>Sign Out</a>

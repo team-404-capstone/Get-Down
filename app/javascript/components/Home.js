@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Event from "./Event"
+
 import { Nav, Navbar, NavItem, NavLink, NavbarBrand } from 'reactstrap'
 
 
@@ -21,6 +22,9 @@ class Home extends React.Component {
         <Navbar color = 'light'>
           <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
             <Nav>
+              <NavItem>
+                <NavLink href ="/">Home</NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink href ="/Event">Events</NavLink>
               </NavItem>

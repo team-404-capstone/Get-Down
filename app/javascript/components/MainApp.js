@@ -7,12 +7,14 @@ import {BrowserRouter,
 } from 'react-router-dom'
 import Home from './Home'
 import Event from './Event'
+import NewEvent from "./NewEvent"
 
 class MainApp extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      events: []
+      events: [],
+      success: false
     }
     this.getEvent()
   }
@@ -25,6 +27,21 @@ class MainApp extends React.Component {
     })
     .then(events => {
       this.setState({events})
+    })
+  }
+  
+  createEvent = (evt) => {
+    return fetch('../events',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({event: evt})
+    })
+    .then(resp => {
+      if(resp === 201){
+        this.getEvent()
+      }
     })
   }
   
@@ -44,7 +61,14 @@ class MainApp extends React.Component {
                 
           <Route path = '/Event' render = {(routeProps) => {
             return(
-              <Event {...routeProps} events={this.state.events} />
+              <Event {...routeProps} events={this.state.events} createEvent = {this.createEvent} />
+              )
+            }} 
+          />
+          
+          <Route path = '/NewEvent' render = {(routeProps) => {
+            return(
+              <NewEvent {...routeProps} createEvent = {this.createEvent} success = {this.state.success} />
               )
             }} 
           />

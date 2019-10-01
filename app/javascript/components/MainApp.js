@@ -45,6 +45,17 @@ class MainApp extends React.Component {
     })
   }
   
+  deleteEvent = (id) => {
+    return fetch(`/events/${id}`, {
+      method: 'DELETE'
+    })
+    .then((resp) => {
+      if(resp.status === 200){
+        this.getEvent()
+      }
+    })
+  }
+  
   render () {
     const {
       logged_in,
@@ -61,7 +72,7 @@ class MainApp extends React.Component {
                 
           <Route path = '/Event' render = {(routeProps) => {
             return(
-              <Event {...routeProps} events={this.state.events} createEvent = {this.createEvent} />
+              <Event {...routeProps} events={this.state.events} deleteEvent = {this.deleteEvent} createEvent = {this.createEvent} />
               )
             }} 
           />

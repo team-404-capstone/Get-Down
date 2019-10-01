@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import L from 'react-leaflet'
+
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet'
 
 

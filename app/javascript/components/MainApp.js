@@ -8,6 +8,7 @@ import {BrowserRouter,
 import Home from './Home'
 import Event from './Event'
 import NewEvent from "./NewEvent"
+import EditEvent from "./EditEvent"
 
 class MainApp extends React.Component {
   constructor(props){
@@ -56,6 +57,23 @@ class MainApp extends React.Component {
     })
   }
   
+  editEvent = (id, num) => {
+    console.log('it got here')
+    return fetch(`/events/${id}`, {
+      method: 'PATCH',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({event, num})
+    })
+    .then(resp => {
+      if(resp.status === 200){
+        this.getEvent()
+      }
+    })
+  }
+     
+  
   render () {
     const {
       logged_in,
@@ -72,7 +90,14 @@ class MainApp extends React.Component {
                 
           <Route path = '/Event' render = {(routeProps) => {
             return(
-              <Event {...routeProps} events={this.state.events} deleteEvent = {this.deleteEvent} createEvent = {this.createEvent} />
+              <Event {...routeProps} events={this.state.events} deleteEvent = {this.deleteEvent} editEvent = {this.editEvent}  createEvent = {this.createEvent} />
+              )
+            }} 
+          />
+          
+          <Route path = '/EditEvent' render = {(routeProps) => {
+            return(
+              <EditEvent {...routeProps} events={this.state.events}  editEvent = {this.editEvent}  />
               )
             }} 
           />

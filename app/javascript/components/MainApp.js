@@ -28,6 +28,21 @@ class MainApp extends React.Component {
     })
   }
   
+  createEvent = (evt) => {
+    return fetch('../events',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({event: evt})
+    })
+    .then(resp => {
+      if(resp === 201){
+        this.getEvent()
+      }
+    })
+  }
+  
   render () {
     const {
       logged_in,
@@ -44,7 +59,7 @@ class MainApp extends React.Component {
                 
           <Route path = '/Event' render = {(routeProps) => {
             return(
-              <Event {...routeProps} events={this.state.events} />
+              <Event {...routeProps} events={this.state.events} createEvent = {this.createEvent} />
               )
             }} 
           />

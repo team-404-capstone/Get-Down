@@ -22,6 +22,9 @@ class Home extends React.Component {
           <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
             <Nav>
               <NavItem>
+                <NavLink href ="/">Home</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href ="/Event">Events</NavLink>
               </NavItem>
               <NavItem>

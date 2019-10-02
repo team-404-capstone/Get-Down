@@ -23,27 +23,29 @@ class MainApp extends React.Component {
   
   getEvent = () => {
     /* global fetch */
-    fetch("../events")
-    .then(response => {
-      return response.json()
+    return fetch("../events")
+    .then(resp => {
+      return resp.json()
     })
     .then(events => {
       this.setState({events})
+        
     })
   }
-  
+
   createEvent = (evt) => {
-    return fetch('../events',{
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({event: evt})
-    })
-    .then(resp => {
-      if(resp === 201){
-        this.getEvent()
-      }
+    return fetch('/events',{
+      method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({event: evt})
+        })
+        .then(resp => {
+          if(resp.status === 201){
+            this.getEvent()
+            console.log("created")
+          }
     })
   }
   

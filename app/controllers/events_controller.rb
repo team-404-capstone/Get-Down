@@ -14,14 +14,14 @@ class EventsController < ApplicationController
     end
     
     def create
-        event = Event.create post_params
+        event = current_user.events.create post_params
         render json: event, status: 201
     end
     
     def destroy
         event = Event.find params[:id]
         if event.destroy
-            render json: event
+            render json: event, status: 200
         end
     end
     

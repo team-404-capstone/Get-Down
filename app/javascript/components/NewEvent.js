@@ -27,12 +27,12 @@ class NewEvent extends React.Component {
   
   localSubmit = (el) => {
     el.preventDefault(),
-    this.setState({success: true})
     this.props.createEvent(this.state.form)
     window.location.href = '/Event'
   }
   
   render () {
+    
     return (
       <React.Fragment>
       <Container>
@@ -56,27 +56,27 @@ class NewEvent extends React.Component {
               <Form>
                 <FormGroup>
                   <Label for="name">Event Name</Label>
-                  <Input onChange = { this.onChange } type="text" name="name"placeholder="Event Name" />
+                  <Input onChange = { this.onChange }  type="string" name="name"placeholder="Event Name" />
                 </FormGroup>
                 <FormGroup>
                   <Label for="date">Date</Label>
-                  <Input onChange = { this.onChange } type="date" name="date" placeholder="Date" />
+                  <Input onChange = { this.onChange }  type="date" name="date" placeholder="Date" />
                 </FormGroup>
                 <FormGroup>
                   <Label for="time">Time</Label>
-                  <Input onChange = { this.onChange } type="time" name="time" placeholder="Time" />
+                  <Input onChange = { this.onChange }  type="time" name="time" placeholder="Time" />
                 </FormGroup>
                 <FormGroup>
                   <Label for="lat">Latitude</Label>
-                  <Input onChange = { this.onChange } type="float" name="lat" placeholder="Float" />
+                  <Input onChange = { this.onChange }  type="float" name="lat" placeholder="Float" />
                 </FormGroup>
                 <FormGroup>
                   <Label for="lng">Longitude</Label>
-                  <Input onChange = { this.onChange } type="float" name="lng" placeholder="Float" />
+                  <Input onChange = { this.onChange }  type="float" name="lng" placeholder="Float" />
                 </FormGroup>
                 <FormGroup>
                   <Label for="description">Description</Label>
-                  <Input onChange = { this.onChange } type="textarea" name="description" placeholder="Description" />
+                  <Input onChange = { this.onChange }  type="text" name="description" placeholder="Description" />
                 </FormGroup>
                 <Button onClick = {this.localSubmit} >Create</Button>
                     

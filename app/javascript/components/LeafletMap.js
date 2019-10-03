@@ -1,29 +1,33 @@
 import React, { Component } from 'react'
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet'
-
+import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
 export default class MyMap extends Component{
   constructor(props){
     super(props)
     this.state ={
-      lat: [],
-      lng: [],
+      lat: 51,
+      lng: -1,
       zoom: 13,
       }
   }
 
   render(){
+
+      const provider = new OpenStreetMapProvider()
+      provider.search({
+          query:"704 J Street San Diego California"
+      }).then((result)=>console.log(result))
       const {
         events,
         getEvent,
         deleteEvent,
         editEvent
       } = this.props
-      const { position } = [address, address2]
-      const address = events.map(function(item) { return item.lat})
-      const address2 = events.map(function(item) { return item.lng})
+      const { position } = [this.state.lat, this.state.lng]
+       const address = events.map(function(item) { return item.address})
       console.log(address)
-      console.log(address2)
+
 
       return(
         <div>

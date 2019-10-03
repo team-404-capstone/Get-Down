@@ -106,7 +106,7 @@ class MainApp extends React.Component {
                   <NavLink href ="/Event">Events</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href ="/LeaftletMap">Map</NavLink>
+                  <NavLink href ="/LeafletMap">Map</NavLink>
                 </NavItem>
                 {!logged_in &&
                   <NavItem>
@@ -130,7 +130,7 @@ class MainApp extends React.Component {
           
           
           
-          <Route path = '/leafletmap' component = {MyMap} />
+          <Route path = '/LeafletMap' component = {MyMap} />
                 
           <Route path = '/Event' render = {(routeProps) => {
             return(

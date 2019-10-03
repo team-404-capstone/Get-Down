@@ -20,7 +20,7 @@ class MainApp extends React.Component {
     }
     this.getEvent()
   }
-  
+
   getEvent = () => {
     /* global fetch */
     return fetch("../events")
@@ -29,7 +29,7 @@ class MainApp extends React.Component {
     })
     .then(events => {
       this.setState({events})
-        
+
     })
   }
 
@@ -48,7 +48,7 @@ class MainApp extends React.Component {
           }
     })
   }
-  
+
   deleteEvent = (id) => {
     return fetch(`/events/${id}`, {
       method: 'DELETE'
@@ -59,7 +59,7 @@ class MainApp extends React.Component {
       }
     })
   }
-  
+
   editEvent = (id, num) => {
     console.log('it got here')
     return fetch(`/events/${id}`, {
@@ -75,8 +75,8 @@ class MainApp extends React.Component {
       }
     })
   }
-     
-  
+
+
   render () {
     const {
       logged_in,
@@ -89,54 +89,59 @@ class MainApp extends React.Component {
       <React.Fragment>
         <BrowserRouter>
           <Switch>
-          
-          <Route path = '/leafletmap' component = {MyMap} />
-                
+
+          <Route path = '/leafletmap' render = {(routeProps) => {
+            return(
+              <MyMap events={this.state.events}/>
+            )
+           }
+          }/>
+
           <Route path = '/Event' render = {(routeProps) => {
             return(
               <Event {...routeProps} events={this.state.events} deleteEvent = {this.deleteEvent} editEvent = {this.editEvent}  createEvent = {this.createEvent} />
               )
-            }} 
+            }}
           />
-          
+
           <Route path = '/EditEvent' render = {(routeProps) => {
             return(
               <EditEvent {...routeProps} events={this.state.events}  editEvent = {this.editEvent}  />
               )
-            }} 
+            }}
           />
-          
+
           <Route path = '/NewEvent' render = {(routeProps) => {
             return(
               <NewEvent {...routeProps} createEvent = {this.createEvent} success = {this.state.success} />
               )
-            }} 
+            }}
           />
-                      
+
           <Route exact path="/" render={(routeProps)=> {
               return(
                 <Home {...routeProps} sign_in_route={this.props.sign_in_route} />
               )
-            }} 
+            }}
           />
-                
-                
+
+
                   {logged_in &&
                     <div>
                       <a href={sign_out_route}>Sign Out</a>
-              
+
                     </div>
                   }
-                  
-                
-                
+
+
+
             {!logged_in &&
               <div>
-    
+
               </div>
             }
-            
-            
+
+
             </Switch>
         </BrowserRouter>
       </React.Fragment>

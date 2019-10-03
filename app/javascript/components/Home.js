@@ -19,23 +19,7 @@ class Home extends React.Component {
 
     return (
       <React.Fragment>
-        <Navbar color = 'light'>
-          <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
-            <Nav>
-              <NavItem>
-                <NavLink href ="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href ="/Event">Events</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/users/sign_up">Sign Up</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href={sign_in_route}>Log In</NavLink>
-              </NavItem>
-            </Nav>
-        </Navbar>
+        
         
         
           

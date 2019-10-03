@@ -4,31 +4,21 @@ import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Button, ListGroup, ListGrou
 
 
 class Event extends React.Component {
+  
   render () {
     const {
       events,
       getEvent,
       deleteEvent,
-      editEvent
+      editEvent,
+      sign_in_route,
+      sign_out_route
     } = this.props
     
     return (
       <React.Fragment>
       <Container>
-       <Navbar color = 'light'>
-          <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
-            <Nav>
-              <NavItem>
-                <NavLink href ="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href ="/Event">Events</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/users/sign_up">Sign Up</NavLink>
-              </NavItem>
-            </Nav>
-        </Navbar>
+      
         <br/>
         <br/>
         <Jumbotron>

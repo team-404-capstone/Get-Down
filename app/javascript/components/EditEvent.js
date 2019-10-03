@@ -91,6 +91,12 @@ class EditEvent extends React.Component {
   
   render () {
     const { eventAttrs, editSuccess, event } = this.state;
+    const {
+      logged_in,
+      sign_in_route,
+      sign_out_route,
+      Events
+    } = this.props
     // console.log(this.state.eventId)
     // const {
     //   name,
@@ -104,17 +110,7 @@ class EditEvent extends React.Component {
       <React.Fragment>
       {editSuccess && <Redirect to="/Event" />}
       <Container>
-        <Navbar color = 'light'>
-              <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
-                <Nav>
-                  <NavItem>
-                    <NavLink href ="/">Home</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href ="/Event">Events</NavLink>
-                  </NavItem>
-                </Nav>
-            </Navbar>
+          
             <br/>
             <br/>
             <Jumbotron>

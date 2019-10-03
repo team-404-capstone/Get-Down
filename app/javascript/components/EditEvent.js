@@ -7,27 +7,35 @@ class EditEvent extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      form: {
-        name: "",
-        date: "",
-        time: "",
-        lat: "",
-        lng: "",
-        description: ""
-      }
+      // form: {
+      //   name: "",
+      //   date: "",
+      //   time: "",
+      //   lat: "",
+      //   lng: "",
+      //   description: ""
+      // },
+      eventId: this.props.match.params.id,
+      eventUpdate: {}
     }
   }
   
+  componentDidMount() {
+    /* global fetch */
+    fetch('/events/:id')
+    console.log(this.props.match.params.id)
+  }
+  
   onChange = (e) => {
-    let {form} = this.state
-    form[e.target.name] = e.target.value
-    this.setState({form: form})
+    const{eventUpdate} = this.state
+    console.log(e.target.value)
+    eventUpdate[e.target.value] = e.target.value
   }
   
   localSubmit = (el) => {
     el.preventDefault(),
     this.setState({success: true})
-    this.props.editEvent(this.state.form)
+    this.props.editEvent(this.state.eventId, this.state.eventUpdate)
     window.location.href = '/Event'
   }
   
@@ -54,27 +62,27 @@ class EditEvent extends React.Component {
                 <Form>
                   <FormGroup>
                     <Label for="name">Event Name</Label>
-                    <Input onChange = { this.onChange } type="text" name="name"placeholder="Event Name" />
+                    <Input onChange = { this.onChange } type="text" name="name" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="date">Date</Label>
-                    <Input onChange = { this.onChange } type="date" name="date" placeholder="Date" />
+                    <Input onChange = { this.onChange } type="date" name="date" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="time">Time</Label>
-                    <Input onChange = { this.onChange } type="time" name="time" placeholder="Time" />
+                    <Input onChange = { this.onChange } type="time" name="time" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="lat">Latitude</Label>
-                    <Input onChange = { this.onChange } type="float" name="lat" placeholder="Float" />
+                    <Input onChange = { this.onChange } type="float" name="lat" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="lng">Longitude</Label>
-                    <Input onChange = { this.onChange } type="float" name="lng" placeholder="Float" />
+                    <Input onChange = { this.onChange } type="float" name="lng" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="description">Description</Label>
-                    <Input onChange = { this.onChange } type="textarea" name="description" placeholder="Description" />
+                    <Input onChange = { this.onChange } type="textarea" name="description" />
                   </FormGroup>
                   <Button onClick = {this.localSubmit} >Edit Event</Button>
                 </Form>

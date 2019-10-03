@@ -6,8 +6,8 @@ class EventsController < ApplicationController
     end
     
     def update
-        event = Event.update post_params
-        render json: event
+        event = current_user.events.update post_params
+        render json: event, status: 200
     end
     
     def show

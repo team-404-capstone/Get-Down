@@ -67,7 +67,7 @@ class MainApp extends React.Component {
       headers:{
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({event, num})
+      body: JSON.stringify({event: num})
     })
     .then(resp => {
       if(resp.status === 200){

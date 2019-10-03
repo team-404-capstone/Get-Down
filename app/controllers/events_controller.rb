@@ -5,12 +5,27 @@ class EventsController < ApplicationController
         render json: events
     end
     
+    # def update
+    #     event = current_user.events.update post_params
+    #     render json: event, status: 200
+    # end
+    
     def update
-        event = current_user.events.update post_params
-        render json: event, status: 200
+        event = current_user.events.find(params[:id])
+        if event.update(post_params)
+            render :show
+        else
+            render json: {error: 'could not update'}, status: 401
+        end
     end
     
     def show
+        event = Event.find(params[:id])
+        if event
+            render json: event
+        else
+            render json: {error: "not found"}, status: 404
+        end
     end
     
     def create

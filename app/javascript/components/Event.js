@@ -42,7 +42,7 @@ class Event extends React.Component {
                 {events.map((event, index) => {
                   return(
                    <ListGroupItem key = {index}>{event.name} | {event.date} | {event.time} | {event.description} 
-                      <Button color = 'secondary' href = '/EditEvent'>Edit Event</Button> 
+                      <Button color = 'secondary' href = {`/EditEvent/${event.id}`}>Edit Event</Button> 
                       <Button color = 'warning' onClick = {() => deleteEvent(event.id)}>Delete Event</Button>
                    </ListGroupItem>
                   )

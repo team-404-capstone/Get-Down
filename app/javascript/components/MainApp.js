@@ -60,14 +60,14 @@ class MainApp extends React.Component {
     })
   }
   
-  editEvent = (id, num) => {
+  editEvent = (id, evt) => {
     console.log('it got here')
     return fetch(`/events/${id}`, {
       method: 'PATCH',
       headers:{
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({event: num})
+      body: JSON.stringify({event: evt})
     })
     .then(resp => {
       if(resp.status === 200){
@@ -75,6 +75,12 @@ class MainApp extends React.Component {
       }
     })
   }
+  
+  showEvent = id => {
+    return fetch(`/events/${id}`).then(response => {
+      return response.json();
+    });
+  };
      
   
   render () {
@@ -99,9 +105,9 @@ class MainApp extends React.Component {
             }} 
           />
           
-          <Route path = '/EditEvent' render = {(routeProps) => {
+          <Route path = '/EditEvent/:id' render = {(routeProps) => {
             return(
-              <EditEvent {...routeProps} events={this.state.events}  editEvent = {this.editEvent}  />
+              <EditEvent {...routeProps} events={this.state.events}  editEvent = {this.editEvent} showEvent = {this.showEvent}  />
               )
             }} 
           />

@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
     
+    before_action :authenticate_user!, only: [:create, :destroy, :update]
+    
     def index
         events = Event.all
         render json: events
@@ -34,7 +36,7 @@ class EventsController < ApplicationController
     end
     
     def destroy
-        event = Event.find params[:id]
+        event = current_user.events.find params[:id]
         if event.destroy
             render json: event, status: 200
         end

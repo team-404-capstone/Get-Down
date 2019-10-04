@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
     
     def index
-        events = Event.all
+        events = Event.order(:date).order(:time).order(:name)
         render json: events
     end
     
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     end
     
     def destroy
-        event = Event.find params[:id]
+        event = Event.find(params[:id])
         if event.destroy
             render json: event, status: 200
         end

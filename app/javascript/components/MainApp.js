@@ -21,7 +21,7 @@ class MainApp extends React.Component {
     }
     this.getEvent()
   }
-  
+
   getEvent = () => {
     /* global fetch */
     return fetch("../events")
@@ -30,7 +30,7 @@ class MainApp extends React.Component {
     })
     .then(events => {
       this.setState({events})
-        
+
     })
   }
 
@@ -49,7 +49,7 @@ class MainApp extends React.Component {
           }
     })
   }
-  
+
   deleteEvent = (id) => {
     return fetch(`/events/${id}`, {
       method: 'DELETE'
@@ -60,8 +60,9 @@ class MainApp extends React.Component {
       }
     })
   }
-  
+
   editEvent = (id, evt) => {
+
     console.log('it got here')
     return fetch(`/events/${id}`, {
       method: 'PATCH',
@@ -83,7 +84,7 @@ class MainApp extends React.Component {
     });
   };
      
-  
+ 
   render () {
     const {
       logged_in,
@@ -126,15 +127,19 @@ class MainApp extends React.Component {
                 }
               </Nav>
           </Navbar>
-          
+
           <Switch>
-          <Route 
-            path = '/LeafletMap' 
-            component = {MyMap} />
-                
-          <Route 
-            path = '/Event' 
-            render = {(routeProps) => {
+
+
+          <Route path = '/leafletmap' render = {(routeProps) => {
+            return(
+              <MyMap events={this.state.events}/>
+            )
+           }
+          }/>
+          
+
+          <Route path = '/Event' render = {(routeProps) => {
             return(
               <Event {...routeProps} 
                 events={this.state.events} 
@@ -148,9 +153,11 @@ class MainApp extends React.Component {
                 logged_in={this.props.logged_in}
               />
               )
-            }} 
+            }}
           />
+
           
+
           <Route 
             path = '/EditEvent/:id' 
             render = {(routeProps) => {
@@ -163,12 +170,11 @@ class MainApp extends React.Component {
                 sign_out_route={this.props.sign_out_route}
               />
               )
-            }} 
+            }}
           />
-          
-          <Route 
-            path = '/NewEvent' 
-            render = {(routeProps) => {
+
+          <Route path = '/NewEvent' render = {(routeProps) => {
+
             return(
               <NewEvent {...routeProps} 
                 createEvent = {this.createEvent} 
@@ -177,20 +183,19 @@ class MainApp extends React.Component {
                 sign_out_route={this.props.sign_out_route}
               />
               )
-            }} 
+            }}
           />
-                      
-          <Route 
-            exact path="/" 
-            render={(routeProps)=> {
+
+          <Route exact path="/" render={(routeProps)=> {
               return(
                 <Home {...routeProps} 
                   sign_in_route={this.props.sign_in_route} 
                   sign_out_route={this.props.sign_out_route}
                 />
               )
-            }} 
+            }}
           />
+
           </Switch>
           
           <footer className="bg-light text-black mt-4">
@@ -209,7 +214,7 @@ class MainApp extends React.Component {
                   </div>
               </div>
           </footer>
-            
+
         </BrowserRouter>
       </React.Fragment>
     );

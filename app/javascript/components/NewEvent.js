@@ -18,19 +18,19 @@ class NewEvent extends React.Component {
       }
     }
   }
-  
+
   onChange = (e) => {
     let {form} = this.state
     form[e.target.name] = e.target.value
     this.setState({form: form})
   }
-  
+
   localSubmit = (el) => {
     el.preventDefault(),
     this.props.createEvent(this.state.form)
     window.location.href = '/Event'
   }
-  
+
   render () {
     const {
       logged_in,
@@ -38,11 +38,11 @@ class NewEvent extends React.Component {
       sign_out_route,
       Events
     } = this.props
-    
+
     return (
       <React.Fragment>
       <Container>
-          
+
             <br/>
             <br/>
             <Jumbotron>
@@ -74,8 +74,12 @@ class NewEvent extends React.Component {
                   <Label for="description">Description</Label>
                   <Input onChange = { this.onChange }  type="text" name="description" placeholder="Description" />
                 </FormGroup>
+                <FormGroup>
+                  <Label for="address">Address</Label>
+                  <Input onChange = { this.onChange }  type="address" name="address" placeholder="Enter address" />
+                </FormGroup>
                 <Button onClick = {this.localSubmit} >Create</Button>
-                    
+
               </Form>
               </Container>
             </Jumbotron>

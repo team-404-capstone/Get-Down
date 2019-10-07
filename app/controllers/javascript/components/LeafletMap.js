@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
+import L from 'leaflet'
 
 export default class MyMap extends Component{
   constructor(props){
@@ -11,17 +12,7 @@ export default class MyMap extends Component{
       zoom: 13,
       markerLat:0,
       markerLng:0,
-      markers:[],
-      centerLat: 0,
-      distanceLat: 0,
-      bufferLat: 0,
-      centerLng: 0,
-      distanceLng: 0,
-      bufferLng: 0,
-      maxLat: 0,
-      minLat: 0,
-      maxLng: 0,
-      minLng: 0
+      markers:[]
       }
   }
   addMarker(latLng){
@@ -51,28 +42,7 @@ export default class MyMap extends Component{
         locations.forEach(e=>{
             lng.push(e.x)
         })
-        const minLat = Math.min(...lat)
-        const maxLat = Math.max(...lat)
-        const minLng = Math.min(...lng)
-        const maxLng = Math.max(...lng)
-        const centerLat = (minLat + maxLat) / 2
-        const distanceLat = (maxLat - minLat)
-        const bufferLat = distanceLat * 0.05
-        const centerLng = (minLng + maxLng) / 2
-        const distanceLng = (maxLng - minLng)
-        const bufferLng = distanceLng * 0.15
-        this.setState({
-            centerLat: centerLat,
-            distanceLat: distanceLat,
-            bufferLat: bufferLat,
-            centerLng: centerLng,
-            distanceLng: distanceLng,
-            bufferLng: bufferLng,
-            minLng: minLng,
-            minLat: minLat,
-            maxLng: maxLng,
-            maxLat: maxLat
-        })
+        this.setState({lat: lat, lng: lng})
       })
     }
   }
@@ -84,16 +54,17 @@ export default class MyMap extends Component{
       deleteEvent,
       editEvent
     } = this.props
+    const minLat = Math.min(parseFloat(this.state.lat))
+    const minLng = Math.min(parseFloat(this.state.lng))
+    const maxLat = Math.max(parseFloat(this.state.lat))
+    const maxLng = Math.max(parseFloat(this.state.Lng))
+    
     return(
       <div>
         <center>
           <LeafletMap
             style={{height:500, width:750}}
-            center={[this.state.centerLat, this.state.centerLng]}
-            bounds={[
-                [this.state.minLat - this.state.bufferLat, this.state.minLng - this.state.bufferLng],
-                [this.state.maxLat + this.state.bufferLat, this.state.maxLng + this.state.bufferLng]
-            ]}
+            center={[51, 111]}
             zoom={this.state.zoom}
             maxZoom={20}
             attributionControl={true}

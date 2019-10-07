@@ -90,13 +90,14 @@ class MainApp extends React.Component {
       logged_in,
       sign_in_route,
       sign_out_route,
+      current_user,
+      current_user_id,
       Events
     } = this.props
 
     return (
       <React.Fragment>
         <BrowserRouter>
-        
           <Navbar color = 'light'>
             <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
               <Nav>
@@ -126,7 +127,7 @@ class MainApp extends React.Component {
                 }
               </Nav>
           </Navbar>
-        
+
           <Switch>
 
 
@@ -140,52 +141,80 @@ class MainApp extends React.Component {
 
           <Route path = '/Event' render = {(routeProps) => {
             return(
-              <Event {...routeProps} events={this.state.events} deleteEvent = {this.deleteEvent} editEvent = {this.editEvent}  createEvent = {this.createEvent} sign_in_route={this.props.sign_in_route} sign_out_route={this.props.sign_out_route}/>
+              <Event {...routeProps} 
+                events={this.state.events} 
+                deleteEvent = {this.deleteEvent} 
+                editEvent = {this.editEvent}  
+                createEvent = {this.createEvent} 
+                sign_in_route={this.props.sign_in_route} 
+                sign_out_route={this.props.sign_out_route}
+                current_user={this.props.current_user}
+                current_user_id={this.props.current_user_id}
+                logged_in={this.props.logged_in}
+              />
               )
             }}
           />
 
           
-          <Route path = '/EditEvent/:id' render = {(routeProps) => {
 
+          <Route 
+            path = '/EditEvent/:id' 
+            render = {(routeProps) => {
             return(
-              <EditEvent {...routeProps} events={this.state.events}  editEvent = {this.editEvent} showEvent = {this.showEvent}  sign_in_route={this.props.sign_in_route} sign_out_route={this.props.sign_out_route}/>
+              <EditEvent {...routeProps} 
+                events={this.state.events}  
+                editEvent = {this.editEvent} 
+                showEvent = {this.showEvent}  
+                sign_in_route={this.props.sign_in_route} 
+                sign_out_route={this.props.sign_out_route}
+              />
               )
             }}
           />
 
           <Route path = '/NewEvent' render = {(routeProps) => {
+
             return(
-              <NewEvent {...routeProps} createEvent = {this.createEvent} success = {this.state.success} sign_in_route={this.props.sign_in_route} sign_out_route={this.props.sign_out_route}/>
+              <NewEvent {...routeProps} 
+                createEvent = {this.createEvent} 
+                success = {this.state.success} 
+                sign_in_route={this.props.sign_in_route} 
+                sign_out_route={this.props.sign_out_route}
+              />
               )
             }}
           />
 
           <Route exact path="/" render={(routeProps)=> {
               return(
-                <Home {...routeProps} sign_in_route={this.props.sign_in_route} sign_out_route={this.props.sign_out_route}/>
+                <Home {...routeProps} 
+                  sign_in_route={this.props.sign_in_route} 
+                  sign_out_route={this.props.sign_out_route}
+                />
               )
             }}
           />
 
-
-                  {logged_in &&
-                    <div>
-                      <a href={sign_out_route}>Sign Out</a>
-
-                    </div>
-                  }
-
-
-
-            {!logged_in &&
-              <div>
-
+          </Switch>
+          
+          <footer className="bg-light text-black mt-4">
+              <div className="container-fluid py-3">
+                  <div className="row">
+                      <div className="col-md-3">
+                          <h5>Footer</h5></div>
+                      <div className="col-md-3"></div>
+                      <div className="col-md-3"></div>
+                      <div className="col-md-3"></div>
+                  </div>
+                  <div className="row">
+                      <div className="col-md-6">This is our Footer<span className="small"><br/>This will stay stationary</span></div>
+                      <div className="col-md-3"></div>
+                      <div className="col-md-3 text-right small align-self-end">©2019 Team_404</div>
+                  </div>
               </div>
-            }
+          </footer>
 
-
-            </Switch>
         </BrowserRouter>
       </React.Fragment>
     );

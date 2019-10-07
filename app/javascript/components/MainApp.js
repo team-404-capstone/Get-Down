@@ -63,8 +63,6 @@ class MainApp extends React.Component {
   }
 
   editEvent = (id, evt) => {
-
-    console.log('it got here')
     return fetch(`/events/${id}`, {
       method: 'PATCH',
       headers:{
@@ -79,11 +77,21 @@ class MainApp extends React.Component {
     })
   }
   
-  showEvent = id => {
-    return fetch(`/events/${id}`).then(response => {
+  showEvent = (id) => {
+    return fetch(`/events/${id}`)
+      .then(response => {
       return response.json();
     });
   };
+  
+  viewEvent = (id) => {
+    return fetch(`/events/${id}`)
+      .then(resp => {
+        if(resp.status === 201){
+          this.getEvent()
+        }
+      })
+    }
      
  
   render () {
@@ -131,12 +139,13 @@ class MainApp extends React.Component {
 
           <Switch>
             
-          <Route path = '/ViewEvent' 
+          <Route path = '/ViewEvent/:id' 
             render = {(routeProps) => {
               return(
                 <ViewEvent {...routeProps}
                   events={this.state.events}
-                  showEvent={this.showEvent} />
+                  showEvent={this.showEvent} 
+                  viewEvent={this.viewEvent}/>
               )
             }}/>
 
@@ -148,7 +157,6 @@ class MainApp extends React.Component {
            }
           }/>
           
-
           <Route path = '/Event' 
             render = {(routeProps) => {
             return(
@@ -156,6 +164,7 @@ class MainApp extends React.Component {
                 events={this.state.events} 
                 deleteEvent = {this.deleteEvent} 
                 editEvent = {this.editEvent}  
+                viewEvent = {this.viewEvent}  
                 createEvent = {this.createEvent} 
                 sign_in_route={this.props.sign_in_route} 
                 sign_out_route={this.props.sign_out_route}
@@ -166,8 +175,6 @@ class MainApp extends React.Component {
               )
             }}
           />
-
-          
 
           <Route 
             path = '/EditEvent/:id' 

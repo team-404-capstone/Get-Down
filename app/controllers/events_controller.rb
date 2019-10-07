@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     def show
         event = Event.find(params[:id])
         if event
-            render json: event
+            render json: event, status: 201
         else
             render json: {error: "not found"}, status: 404
         end

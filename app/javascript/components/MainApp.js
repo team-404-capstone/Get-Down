@@ -8,6 +8,7 @@ import {BrowserRouter,
 import Home from './Home'
 import Event from './Event'
 import NewEvent from "./NewEvent"
+import ViewEvent from "./ViewEvent"
 import EditEvent from "./EditEvent"
 import MyMap from "./LeafletMap"
 import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Button, ListGroup, ListGroupItem, Jumbotron, Container, Form, FormGroup, Input, Label } from 'reactstrap'
@@ -129,9 +130,18 @@ class MainApp extends React.Component {
           </Navbar>
 
           <Switch>
+            
+          <Route path = '/ViewEvent' 
+            render = {(routeProps) => {
+              return(
+                <ViewEvent {...routeProps}
+                  events={this.state.events}
+                  showEvent={this.showEvent} />
+              )
+            }}/>
 
-
-          <Route path = '/leafletmap' render = {(routeProps) => {
+          <Route path = '/leafletmap' 
+            render = {(routeProps) => {
             return(
               <MyMap events={this.state.events}/>
             )
@@ -139,7 +149,8 @@ class MainApp extends React.Component {
           }/>
           
 
-          <Route path = '/Event' render = {(routeProps) => {
+          <Route path = '/Event' 
+            render = {(routeProps) => {
             return(
               <Event {...routeProps} 
                 events={this.state.events} 
@@ -173,8 +184,8 @@ class MainApp extends React.Component {
             }}
           />
 
-          <Route path = '/NewEvent' render = {(routeProps) => {
-
+          <Route path = '/NewEvent' 
+            render = {(routeProps) => {
             return(
               <NewEvent {...routeProps} 
                 createEvent = {this.createEvent} 
@@ -186,7 +197,8 @@ class MainApp extends React.Component {
             }}
           />
 
-          <Route exact path="/" render={(routeProps)=> {
+          <Route exact path="/" 
+            render={(routeProps)=> {
               return(
                 <Home {...routeProps} 
                   sign_in_route={this.props.sign_in_route} 

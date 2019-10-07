@@ -96,14 +96,14 @@ class MainApp extends React.Component {
     
       // ========================================== ATTEND METHODS  
   
-  createAttend = (att) => {
+  createAttend = (id) => {
     console.log('got here to create method')
     return fetch('/attends',{
       method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({attend: att})
+        body: JSON.stringify({event_id: id})
         })
         .then(resp => {
           if(resp.status === 201){

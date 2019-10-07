@@ -15,7 +15,8 @@ class Event extends React.Component {
       sign_out_route,
       current_user,
       current_user_id,
-      logged_in
+      logged_in,
+      viewEvent
     } = this.props
     
     return (
@@ -37,7 +38,8 @@ class Event extends React.Component {
                 { events.map((event, index) => {
                   return (
                    <ListGroupItem key = {index}>NAME: {event.name} | DATE: {event.date} | TIME: {event.time} | ABOUT: {event.description} <br/>
-                    { event.index_events_on_user_id === current_user_id &&
+                   <Button color = 'primary' href = {`/ViewEvent/${event.id}`} onClick = {() => viewEvent(event.id)}>View Event</Button>
+                    { event.user_id === current_user_id &&
                       <div>
                         <Button color = 'secondary' href = {`/EditEvent/${event.id}`}>Edit Event</Button>
                         <Button color = 'warning' onClick = {() => deleteEvent(event.id)}>Delete Event</Button>

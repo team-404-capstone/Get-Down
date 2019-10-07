@@ -23,6 +23,7 @@ class MainApp extends React.Component {
     this.getEvent()
   }
 
+// =========================================== EVENT METHODS
   getEvent = () => {
     /* global fetch */
     return fetch("../events")
@@ -92,6 +93,36 @@ class MainApp extends React.Component {
         }
       })
     }
+    
+      // ========================================== ATTEND METHODS  
+  
+  createAttend = (att) => {
+    console.log('got here to create method')
+    return fetch('/attends',{
+      method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({attend: att})
+        })
+        .then(resp => {
+          if(resp.status === 201){
+            this.getEvent()
+            console.log("created")
+          }
+    })
+  }
+  
+  deleteAttend = (id) => {
+    return fetch(`/attends/${id}`, {
+      method: 'DELETE'
+    })
+    .then((resp) => {
+      if(resp.status === 200){
+        this.getEvent()
+      }
+    })
+  }
      
  
   render () {
@@ -101,7 +132,9 @@ class MainApp extends React.Component {
       sign_out_route,
       current_user,
       current_user_id,
-      Events
+      Events,
+      createAttend,
+      deleteAttend
     } = this.props
 
     return (
@@ -145,6 +178,8 @@ class MainApp extends React.Component {
                 <ViewEvent {...routeProps}
                   events={this.state.events}
                   showEvent={this.showEvent} 
+                  createAttend={this.createAttend} 
+                  deleteAttend={this.deleteAttend} 
                   viewEvent={this.viewEvent}/>
               )
             }}/>

@@ -9,6 +9,7 @@ class ViewEvent extends React.Component {
     super(props)
     this.state = {  
       eventAttrs: {},
+      attendStatus: false
     };
   }
   
@@ -29,11 +30,15 @@ class ViewEvent extends React.Component {
     });
   }
   
+  localAttend = (el) => {
+    el.preventDefault(),
+    this.props.createAttend()
+  }
+  
   render () {
     const {
-      Events,
-      showEvent,
-      viewEvent
+      deleteAttend,
+      createAttend
     } = this.props
     
     return (
@@ -52,6 +57,7 @@ class ViewEvent extends React.Component {
                   <CardText>Address: {this.state.eventAttrs.address}</CardText>
                   <CardText>Description: {this.state.eventAttrs.description}</CardText>
                   <Button href = '/Event'>Back</Button>
+                  <Button color = 'success' onClick = {this.localAttend}>Join</Button>
                 </CardBody>
               </Card>
             </div>

@@ -22,6 +22,7 @@ class MainApp extends React.Component {
       success: false
     }
     this.getEvent()
+    
   }
 
                   // =========================================== EVENT METHODS
@@ -107,33 +108,33 @@ class MainApp extends React.Component {
       })
     }
   
-  createAttend = (id) => {
-    return fetch('/attends',{
-      method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({attend: {event_id: id}})
-        })
-        .then(resp => {
-          if(resp.status === 201){
-            this.getAttend(id)
-          }
-    })
-  }
-  
-  deleteAttend = (id) => {
-    return fetch(`/attends/${id}`, {
-      method: 'DELETE'
-    })
-    .then((resp) => {
-      if(resp.status === 200){
-        this.getAttend()
-        window.location.href = '/Event'
-      }
-    })
-  }
-     
+    createAttend = (id) => {
+      return fetch('/attends',{
+        method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({attend: {event_id: id}})
+          })
+          .then(resp => {
+            if(resp.status === 201){
+              this.getAttend(id)
+            }
+      })
+    }
+    
+    deleteAttend = (id) => {
+      return fetch(`/attends/${id}`, {
+        method: 'DELETE'
+      })
+      .then((resp) => {
+        if(resp.status === 200){
+          this.getAttend()
+          window.location.href = '/Event'
+        }
+      })
+    }
+       
  
   render () {
     const {
@@ -210,6 +211,7 @@ class MainApp extends React.Component {
             return(
               <Event {...routeProps} 
                 events={this.state.events} 
+                getAttend={this.state.getAttend} 
                 deleteEvent = {this.deleteEvent} 
                 editEvent = {this.editEvent}  
                 viewEvent = {this.viewEvent}  

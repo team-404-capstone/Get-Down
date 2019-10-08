@@ -11,17 +11,12 @@ class ViewEvent extends React.Component {
       eventAttrs: {},
       attendStatus: false
     };
+   
   }
   
   componentDidMount() {
     this.getEvent();
-  }
-  
-  componentDidUpdate(prevProps) {
-    if(prevProps.match.params.id != this.props.match.params.id) {
-      this.getEvent();
-      
-    }
+    this.props.getAttend(this.props.match.params.id)
   }
   
   getEvent() {
@@ -70,8 +65,9 @@ class ViewEvent extends React.Component {
               { attends.map((attend, index) => {
                 return(
                   <div key = {index}>
-                   <ListGroupItem>{attend.user_email}        <Button color = 'danger' onClick = {() => deleteAttend(attend.id)}>Leave</Button></ListGroupItem>
-                   
+                     <ListGroupItem>{attend.user_email}
+                         <Button color = 'danger' onClick = {() => deleteAttend(attend.id)}>Leave</Button>
+                     </ListGroupItem>
                   </div>
                  )
               })}

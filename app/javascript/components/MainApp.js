@@ -104,13 +104,10 @@ class MainApp extends React.Component {
       })
       .then(attends => {
         this.setState({attends})
-        console.log('got to setState in getAttend method')
-        console.log(this.state.attends)
       })
     }
   
   createAttend = (id) => {
-    console.log('got here to create method', id)
     return fetch('/attends',{
       method: 'POST',
         headers: {
@@ -121,7 +118,6 @@ class MainApp extends React.Component {
         .then(resp => {
           if(resp.status === 201){
             this.getAttend(id)
-            console.log("created")
           }
     })
   }
@@ -132,7 +128,8 @@ class MainApp extends React.Component {
     })
     .then((resp) => {
       if(resp.status === 200){
-        this.getEvent()
+        this.getAttend()
+        window.location.href = '/Event'
       }
     })
   }
@@ -147,7 +144,8 @@ class MainApp extends React.Component {
       current_user_id,
       Events,
       createAttend,
-      deleteAttend
+      deleteAttend,
+      getAttend
     } = this.props
 
     return (
@@ -194,7 +192,8 @@ class MainApp extends React.Component {
                   showEvent={this.showEvent} 
                   createAttend={this.createAttend} 
                   deleteAttend={this.deleteAttend} 
-                  viewEvent={this.viewEvent}/>
+                  viewEvent={this.viewEvent}
+                  getAttend={this.getAttend}/>
               )
             }}/>
 

@@ -20,6 +20,7 @@ class ViewEvent extends React.Component {
   componentDidUpdate(prevProps) {
     if(prevProps.match.params.id != this.props.match.params.id) {
       this.getEvent();
+      
     }
   }
   
@@ -37,13 +38,13 @@ class ViewEvent extends React.Component {
   
   render () {
     const {
-      attends
+      attends,
+      deleteAttend
     } = this.props
     
     return (
       <React.Fragment>
       <br/>
-      {console.log(attends)}
       <br/>
         <Jumbotron>
           <h1>View Event</h1>
@@ -68,9 +69,10 @@ class ViewEvent extends React.Component {
             <ListGroup>
               { attends.map((attend, index) => {
                 return(
-                
-                   <ListGroupItem key = {index}>{attend.user_email}{console.log(attend)}</ListGroupItem>
-                 
+                  <div key = {index}>
+                   <ListGroupItem>{attend.user_email}        <Button color = 'danger' onClick = {() => deleteAttend(attend.id)}>Leave</Button></ListGroupItem>
+                   
+                  </div>
                  )
               })}
             </ListGroup>

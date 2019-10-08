@@ -37,13 +37,13 @@ class ViewEvent extends React.Component {
   
   render () {
     const {
-      deleteAttend,
-      createAttend
+      attends
     } = this.props
     
     return (
       <React.Fragment>
       <br/>
+      {console.log(attends)}
       <br/>
         <Jumbotron>
           <h1>View Event</h1>
@@ -61,6 +61,17 @@ class ViewEvent extends React.Component {
                 </CardBody>
               </Card>
             </div>
+        </Jumbotron>
+        <Jumbotron>
+          <div>
+            <ListGroup>
+              { attends.map((attend, index) => {
+                return(
+                 <ListGroupItem key = {index}>{attend.email}{console.log('created list')}</ListGroupItem>
+                 )
+              })}
+            </ListGroup>
+          </div>
         </Jumbotron>
       </React.Fragment>
     );

@@ -18,6 +18,7 @@ class MainApp extends React.Component {
     super(props)
     this.state = {
       events: [],
+      attends: [],
       success: false
     }
     this.getEvent()
@@ -96,6 +97,17 @@ class MainApp extends React.Component {
     }
     
                // ========================================== ATTEND METHODS  
+   getAttend = () => {
+      return fetch("../attends")
+      .then(resp => {
+        return resp.json()
+      })
+      .then(attends => {
+        this.setState({attends})
+        console.log('got to setState in getAttend method')
+        console.log(this.state.attends)
+      })
+    }
   
   createAttend = (id) => {
     console.log('got here to create method', id)
@@ -108,7 +120,7 @@ class MainApp extends React.Component {
         })
         .then(resp => {
           if(resp.status === 201){
-            this.getEvent()
+            this.getAttend()
             console.log("created")
           }
     })
@@ -178,6 +190,7 @@ class MainApp extends React.Component {
               return(
                 <ViewEvent {...routeProps}
                   events={this.state.events}
+                  attends={this.state.attends}
                   showEvent={this.showEvent} 
                   createAttend={this.createAttend} 
                   deleteAttend={this.deleteAttend} 

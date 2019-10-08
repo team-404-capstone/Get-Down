@@ -8,6 +8,7 @@ import {BrowserRouter,
 import Home from './Home'
 import Event from './Event'
 import NewEvent from "./NewEvent"
+import ViewEvent from "./ViewEvent"
 import EditEvent from "./EditEvent"
 import MyMap from "./LeafletMap"
 import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Button, ListGroup, ListGroupItem, Jumbotron, Container, Form, FormGroup, Input, Label } from 'reactstrap'
@@ -62,8 +63,6 @@ class MainApp extends React.Component {
   }
 
   editEvent = (id, evt) => {
-
-    console.log('it got here')
     return fetch(`/events/${id}`, {
       method: 'PATCH',
       headers:{
@@ -78,11 +77,21 @@ class MainApp extends React.Component {
     })
   }
   
-  showEvent = id => {
-    return fetch(`/events/${id}`).then(response => {
+  showEvent = (id) => {
+    return fetch(`/events/${id}`)
+      .then(response => {
       return response.json();
     });
   };
+  
+  viewEvent = (id) => {
+    return fetch(`/events/${id}`)
+      .then(resp => {
+        if(resp.status === 201){
+          this.getEvent()
+        }
+      })
+    }
      
  
   render () {
@@ -129,22 +138,33 @@ class MainApp extends React.Component {
           </Navbar>
 
           <Switch>
+            
+          <Route path = '/ViewEvent/:id' 
+            render = {(routeProps) => {
+              return(
+                <ViewEvent {...routeProps}
+                  events={this.state.events}
+                  showEvent={this.showEvent} 
+                  viewEvent={this.viewEvent}/>
+              )
+            }}/>
 
-
-          <Route path = '/leafletmap' render = {(routeProps) => {
+          <Route path = '/leafletmap' 
+            render = {(routeProps) => {
             return(
               <MyMap events={this.state.events}/>
             )
            }
           }/>
           
-
-          <Route path = '/Event' render = {(routeProps) => {
+          <Route path = '/Event' 
+            render = {(routeProps) => {
             return(
               <Event {...routeProps} 
                 events={this.state.events} 
                 deleteEvent = {this.deleteEvent} 
                 editEvent = {this.editEvent}  
+                viewEvent = {this.viewEvent}  
                 createEvent = {this.createEvent} 
                 sign_in_route={this.props.sign_in_route} 
                 sign_out_route={this.props.sign_out_route}
@@ -155,8 +175,6 @@ class MainApp extends React.Component {
               )
             }}
           />
-
-          
 
           <Route 
             path = '/EditEvent/:id' 
@@ -173,8 +191,8 @@ class MainApp extends React.Component {
             }}
           />
 
-          <Route path = '/NewEvent' render = {(routeProps) => {
-
+          <Route path = '/NewEvent' 
+            render = {(routeProps) => {
             return(
               <NewEvent {...routeProps} 
                 createEvent = {this.createEvent} 
@@ -186,7 +204,8 @@ class MainApp extends React.Component {
             }}
           />
 
-          <Route exact path="/" render={(routeProps)=> {
+          <Route exact path="/" 
+            render={(routeProps)=> {
               return(
                 <Home {...routeProps} 
                   sign_in_route={this.props.sign_in_route} 

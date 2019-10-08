@@ -79,7 +79,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: Get_Down_production
-  username: Get_Down
-  password: <%= ENV['GET_DOWN_DATABASE_PASSWORD'] %>
+    url: <%= ENV['DATABASE_URL'] %>

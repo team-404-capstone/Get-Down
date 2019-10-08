@@ -3,8 +3,12 @@ class AttendsController < ApplicationController
     before_action :authenticate_user!, only: [:create, :destroy]
     
     def index
-        attends = Attend.all
-        render json: attends
+        if params[:event_id]
+            event = Event.find params[:event_id]
+            @attends = event.attends
+        else
+            @attends = Attend.all
+        end
     end
     
     def create

@@ -97,8 +97,8 @@ class MainApp extends React.Component {
     }
     
                // ========================================== ATTEND METHODS  
-   getAttend = () => {
-      return fetch("../attends")
+   getAttend = (id) => {
+      return fetch(`../attends?event_id=${id}`)
       .then(resp => {
         return resp.json()
       })
@@ -120,7 +120,7 @@ class MainApp extends React.Component {
         })
         .then(resp => {
           if(resp.status === 201){
-            this.getAttend()
+            this.getAttend(id)
             console.log("created")
           }
     })

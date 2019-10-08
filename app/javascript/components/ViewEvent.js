@@ -63,11 +63,14 @@ class ViewEvent extends React.Component {
             </div>
         </Jumbotron>
         <Jumbotron>
+        <h1>Attendees</h1>
           <div>
             <ListGroup>
               { attends.map((attend, index) => {
                 return(
-                 <ListGroupItem key = {index}>{attend.email}{console.log('created list')}</ListGroupItem>
+                
+                   <ListGroupItem key = {index}>{attend.user_email}{console.log(attend)}</ListGroupItem>
+                 
                  )
               })}
             </ListGroup>

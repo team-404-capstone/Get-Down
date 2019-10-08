@@ -23,7 +23,8 @@ class MainApp extends React.Component {
     this.getEvent()
   }
 
-// =========================================== EVENT METHODS
+                  // =========================================== EVENT METHODS
+
   getEvent = () => {
     /* global fetch */
     return fetch("../events")
@@ -94,16 +95,16 @@ class MainApp extends React.Component {
       })
     }
     
-      // ========================================== ATTEND METHODS  
+               // ========================================== ATTEND METHODS  
   
   createAttend = (id) => {
-    console.log('got here to create method')
+    console.log('got here to create method', id)
     return fetch('/attends',{
       method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({event_id: id})
+        body: JSON.stringify({attend: {event_id: id}})
         })
         .then(resp => {
           if(resp.status === 201){

@@ -32,7 +32,7 @@ class ViewEvent extends React.Component {
   
   localAttend = (el) => {
     el.preventDefault(),
-    this.props.createAttend()
+    this.props.createAttend(this.props.match.params.id)
   }
   
   render () {

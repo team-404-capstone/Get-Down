@@ -16,7 +16,7 @@
  */
  /*! Themestr.app `Tequila` Bootstrap 4.3.1 theme */
  // @import 'bootstrap';
- @import url(https://fonts.googleapis.com/css?family=Voltaire:200,300,400,700);
+ @import url(https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap);
  /*!
   * Bootstrap v4.1.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors
@@ -37,20 +37,20 @@
    --white: #fff;
    --gray: #6c757d;
    --gray-dark: #343a40;
-   --primary: #2F414A;
+   --primary: #D8C3A5;
    --secondary: #F47B53;
    --success: #420084;
    --info: #7ebcfa;
    --warning: #ff9933;
    --danger: #f2460d;
-   --light: #eef0f2;
+   --light: #D8C3A5;
    --dark: #000633;
    --breakpoint-xs: 0;
    --breakpoint-sm: 576px;
    --breakpoint-md: 768px;
    --breakpoint-lg: 992px;
    --breakpoint-xl: 1200px;
-   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   --font-family-sans-serif: -apple-system, 'Montserrat Alternates', BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
  *,
@@ -59,7 +59,7 @@
    box-sizing: border-box; }
 
  html {
-   font-family: sans-serif;
+   font-family: "Montserrat Alternates";
    line-height: 1.15;
    -webkit-text-size-adjust: 100%;
    -ms-text-size-adjust: 100%;
@@ -74,14 +74,14 @@
 
  body {
    margin: 0;
-   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   font-family: -apple-system, 'Montserrat Alternates', BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
    font-size: 1rem;
    font-weight: 400;
    line-height: 1.5;
-   color: #212529;
+   color: #E85A4F;
    text-align: left;
 
-   background-color: #000633; }
+   background-color: #D8C3A5; }
 
  [tabindex="-1"]:focus {
    outline: 0 !important; }
@@ -319,7 +319,7 @@
  h1, h2, h3, h4, h5, h6,
  .h1, .h2, .h3, .h4, .h5, .h6 {
    margin-bottom: 0.5rem;
-   font-family: Voltaire;
+   font-family: "Montserrat Alternates";
    font-weight: 500;
    line-height: 1.2;
    color: inherit; }
@@ -978,7 +978,8 @@
 
  .was-validated .custom-control-input:invalid ~ .custom-control-label, .custom-control-input.is-invalid ~ .custom-control-label {
    color: #f2460d; }
-   .was-validated .custom-control-input:invalid ~ .custom-control-label::before, .custom-control-input.is-invalid ~ .custom-control-label::before {
+   .was-validated .custom-control-input:invalid ~ .custom-control
+   -label::before, .custom-control-input.is-invalid ~ .custom-control-label::before {
      background-color: #f9a386; }
 
  .was-validated .custom-control-input:invalid ~ .invalid-feedback,
@@ -1051,16 +1052,18 @@
 
  .btn {
    display: inline-block;
-   font-weight: 400;
+   font-weight: 300;
    text-align: center;
    white-space: nowrap;
    vertical-align: middle;
    user-select: none;
-   border: 1px solid transparent;
-   padding: 0.375rem 0.75rem;
+   border: 0px solid transparent;
+   padding: 0.45rem 0.45rem;
    font-size: 1rem;
-   line-height: 1.5;
-   border-radius: 0.25rem;
+   margin-left: 8rem;
+   margin-right: 8rem;
+   line-height: 1;
+   border-radius: 0.1rem;
    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
    @media screen and (prefers-reduced-motion: reduce) {
      .btn {
@@ -1083,8 +1086,8 @@
 
  .btn-primary {
    color: #fff;
-   background-color: #2F414A;
-   border-color: #2F414A; }
+   background-color: #8E8D8A;
+   border-color: #8E8D8A; }
    .btn-primary:hover {
      color: #fff;
      background-color: #202c33;
@@ -2402,7 +2405,7 @@
      display: none; }
 
  .navbar-light .navbar-brand {
-   color: rgba(0, 0, 0, 0.9); }
+   color: rgba(0, 0, 0, 10); }
    .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
      color: rgba(0, 0, 0, 0.9); }
 
@@ -2468,12 +2471,16 @@
  .card {
    position: relative;
    display: flex;
-   flex-direction: column;
+   justify-content: center;
+   flex-direction: row;
+   flex-wrap: wrap;
    min-width: 0;
+   margin-left: 2rem;
+   margin-right: 2rem;
    word-wrap: break-word;
    background-color: #fff;
    background-clip: border-box;
-   border: 1px solid rgba(0, 0, 0, 0.125);
+   border: 1px rgba(0, 0, 0, 0.125);
    border-radius: 0.25rem; }
    .card > hr {
      margin-right: 0;
@@ -2840,10 +2847,12 @@
      background-color: black; }
 
  .jumbotron {
-   padding: 2rem 1rem;
+   padding: 21rem 1rem;
    margin-bottom: 2rem;
-   background-color: #e9ecef;
-   border-radius: 0.3rem; }
+   margin-left: 2rem;
+   margin-right: 2rem;
+   background-color: #EAE7DC;
+   border-radius: 0.1rem; }
    @media (min-width: 576px) {
      .jumbotron {
        padding: 4rem 2rem; } }
@@ -3011,8 +3020,8 @@
    display: block;
    padding: 0.75rem 1.25rem;
    margin-bottom: -1px;
-   background-color: #fff;
-   border: 1px solid rgba(0, 0, 0, 0.125); }
+   background-color: #EAE7DC;
+   border: 1px none rgba(0, 0, 0, 0.125); }
    .list-group-item:first-child {
      border-top-left-radius: 0.25rem;
      border-top-right-radius: 0.25rem; }
@@ -3728,7 +3737,8 @@
    background-color: #c2380a !important; }
 
  .bg-light {
-   background-color: #eef0f2 !important; }
+   background-color: #D8C3A5
+    !important; }
 
  a.bg-light:hover, a.bg-light:focus,
  button.bg-light:hover,
@@ -5588,6 +5598,9 @@
 
  a.text-primary:hover, a.text-primary:focus {
    color: #1b262b !important; }
+
+
+
 
  .text-secondary {
    color: #F47B53 !important; }

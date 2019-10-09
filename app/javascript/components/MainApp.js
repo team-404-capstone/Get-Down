@@ -80,14 +80,14 @@ class MainApp extends React.Component {
       }
     })
   }
-  
+
   showEvent = (id) => {
     return fetch(`/events/${id}`)
       .then(response => {
       return response.json();
     });
   };
-  
+
   viewEvent = (id) => {
     return fetch(`/events/${id}`)
       .then(resp => {
@@ -96,7 +96,7 @@ class MainApp extends React.Component {
         }
       })
     }
-    
+
                // ========================================== ATTEND METHODS  
    getAttend = (id) => {
       return fetch(`../attends?event_id=${id}`)
@@ -136,6 +136,7 @@ class MainApp extends React.Component {
     }
        
  
+
   render () {
     const {
       logged_in,
@@ -152,7 +153,7 @@ class MainApp extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Navbar color = 'light'>
+          <Navbar >
             <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
               <Nav>
                 <NavItem>
@@ -174,7 +175,7 @@ class MainApp extends React.Component {
                     <NavLink href={sign_in_route}>Log In</NavLink>
                   </NavItem>
                 }
-                {logged_in && 
+                {logged_in &&
                   <NavItem>
                     <NavLink href={sign_out_route}>Log Out</NavLink>
                   </NavItem>
@@ -183,12 +184,13 @@ class MainApp extends React.Component {
           </Navbar>
 
           <Switch>
-            
-          <Route path = '/ViewEvent/:id' 
+
+          <Route path = '/ViewEvent/:id'
             render = {(routeProps) => {
               return(
                 <ViewEvent {...routeProps}
                   events={this.state.events}
+
                   attends={this.state.attends}
                   showEvent={this.showEvent} 
                   createAttend={this.createAttend} 
@@ -201,15 +203,15 @@ class MainApp extends React.Component {
               )
             }}/>
 
-          <Route path = '/leafletmap' 
+          <Route path = '/leafletmap'
             render = {(routeProps) => {
             return(
               <MyMap events={this.state.events}/>
             )
            }
           }/>
-          
-          <Route path = '/Event' 
+
+          <Route path = '/Event'
             render = {(routeProps) => {
             return(
               <Event {...routeProps} 
@@ -229,39 +231,39 @@ class MainApp extends React.Component {
             }}
           />
 
-          <Route 
-            path = '/EditEvent/:id' 
+          <Route
+            path = '/EditEvent/:id'
             render = {(routeProps) => {
             return(
-              <EditEvent {...routeProps} 
-                events={this.state.events}  
-                editEvent = {this.editEvent} 
-                showEvent = {this.showEvent}  
-                sign_in_route={this.props.sign_in_route} 
+              <EditEvent {...routeProps}
+                events={this.state.events}
+                editEvent = {this.editEvent}
+                showEvent = {this.showEvent}
+                sign_in_route={this.props.sign_in_route}
                 sign_out_route={this.props.sign_out_route}
               />
               )
             }}
           />
 
-          <Route path = '/NewEvent' 
+          <Route path = '/NewEvent'
             render = {(routeProps) => {
             return(
-              <NewEvent {...routeProps} 
-                createEvent = {this.createEvent} 
-                success = {this.state.success} 
-                sign_in_route={this.props.sign_in_route} 
+              <NewEvent {...routeProps}
+                createEvent = {this.createEvent}
+                success = {this.state.success}
+                sign_in_route={this.props.sign_in_route}
                 sign_out_route={this.props.sign_out_route}
               />
               )
             }}
           />
 
-          <Route exact path="/" 
+          <Route exact path="/"
             render={(routeProps)=> {
               return(
-                <Home {...routeProps} 
-                  sign_in_route={this.props.sign_in_route} 
+                <Home {...routeProps}
+                  sign_in_route={this.props.sign_in_route}
                   sign_out_route={this.props.sign_out_route}
                 />
               )
@@ -269,20 +271,11 @@ class MainApp extends React.Component {
           />
 
           </Switch>
-          
+
           <footer className="bg-light text-black mt-4">
               <div className="container-fluid py-3">
                   <div className="row">
-                      <div className="col-md-3">
-                          <h5>Footer</h5></div>
-                      <div className="col-md-3"></div>
-                      <div className="col-md-3"></div>
-                      <div className="col-md-3"></div>
-                  </div>
-                  <div className="row">
-                      <div className="col-md-6">This is our Footer<span className="small"><br/>This will stay stationary</span></div>
-                      <div className="col-md-3"></div>
-                      <div className="col-md-3 text-right small align-self-end">©2019 Team_404</div>
+                      <div className="col-md-3 text-center small align-self-end">©2019 Team_404</div>
                   </div>
               </div>
           </footer>

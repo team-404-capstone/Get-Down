@@ -7,19 +7,6 @@ import { Redirect } from "react-router-dom"
 class EditEvent extends React.Component {
   constructor(props){
     super(props)
-  //   this.state = {
-  //     form: {
-  //       name: "",
-  //       date: "",
-  //       time: "",
-  //       lat: "",
-  //       lng: "",
-  //       description: ""
-  //     },
-  //     eventId: this.props.match.params.id,
-  //     eventUpdate: {}
-  //   }
-  // }
     this.state = {  
     eventAttrs: {},
     editSuccess: false
@@ -63,31 +50,6 @@ class EditEvent extends React.Component {
       this.setState({ eventAttrs: response });
     });
   }
-  // componentDidMount = () => {
-  //   /* global fetch */
-  //   fetch("/events/:id")
-  //   console.log(this.props.match.params.id)
-  // }
-  
-  // componentDidUpdate = (currentEvent) => {
-  //   if(currentEvent.match.params.id != this.props.match.params.id){
-  //     this.getEvent();
-  //   }
-  // }
-  
-  // onChange = (e) => {
-  //   const{eventUpdate} = this.state
-  //   console.log(e.target.value)
-  //   eventUpdate[e.target.name] = e.target.value
-  // }
-  
-  // localSubmit = (e) => {
-  //   const {editEvent} = this.props
-  //   const {eventId, eventUpdate} = this.state
-  //   e.preventDefault(),
-  //   editEvent(eventId, eventUpdate)
-  //   window.location.href = '/Event'
-  // }
   
   render () {
     const { eventAttrs, editSuccess, event } = this.state;
@@ -97,15 +59,6 @@ class EditEvent extends React.Component {
       sign_out_route,
       Events
     } = this.props
-    // console.log(this.state.eventId)
-    // const {
-    //   name,
-    //   date,
-    //   time,
-    //   lat,
-    //   lng,
-    //   description
-    // } = this.state
     return (
       <React.Fragment>
       {editSuccess && <Redirect to="/Event" />}
@@ -130,12 +83,8 @@ class EditEvent extends React.Component {
                     <Input onChange = { this.onChange } type="time" value={eventAttrs.time} name="time" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="lat">Latitude</Label>
-                    <Input onChange = { this.onChange } type="float" value={eventAttrs.lat} name="lat" />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="lng">Longitude</Label>
-                    <Input onChange = { this.onChange } type="float" value={eventAttrs.lng} name="lng" />
+                    <Label for="address">Address</Label>
+                    <Input onChange = { this.onChange } type="text" value={eventAttrs.address} name="address" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="description">Description</Label>

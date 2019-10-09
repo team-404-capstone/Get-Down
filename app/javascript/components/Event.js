@@ -12,39 +12,52 @@ class Event extends React.Component {
       deleteEvent,
       editEvent,
       sign_in_route,
-      sign_out_route
+      sign_out_route,
+      current_user,
+      current_user_id,
+      logged_in,
+      viewEvent
     } = this.props
     
     return (
       <React.Fragment>
-      <Container>
       
+      <Container>
         <br/>
         <br/>
         <Jumbotron>
           <Container>
             <h1>Events</h1>
              <br/>
-              <Button color = 'primary' href = '/NewEvent'>Create Event</Button>
+             { logged_in &&
+               <Button color = 'primary' href = '/NewEvent'>Create Event</Button>
+             }
              <br/>
              <br/>
               <ListGroup>
-                {events.map((event, index) => {
-                  return(
-                   <ListGroupItem key = {index}>{event.name} | {event.date} | {event.time} | {event.description} <br/>
-                      <Button color = 'secondary' href = {`/EditEvent/${event.id}`}>Edit Event</Button>
-                      <Button color = 'warning' onClick = {() => deleteEvent(event.id)}>Delete Event</Button>
+                { events.map((event, index) => {
+                  return (
+                   <ListGroupItem key = {index}>NAME: {event.name} | DATE: {event.date} | TIME: {event.time} | ABOUT: {event.description} <br/>
+                   <Button color = 'primary' href = {`/ViewEvent/${event.id}`} onClick = {() => viewEvent(event.id)}>View Event</Button>
+                    { event.user_id === current_user_id &&
+                      <div>
+                        <Button color = 'secondary' href = {`/EditEvent/${event.id}`}>Edit Event</Button>
+                        <Button color = 'warning' onClick = {() => deleteEvent(event.id)}>Delete Event</Button>
+                      </div>
+                    }
                    </ListGroupItem>
                   )
-               })
+                })
                }
               </ListGroup>
             </Container>
           </Jumbotron>
-      </Container>
+        </Container>
       </React.Fragment>
     );
   }
 }
 
+    
+    
 export default Event

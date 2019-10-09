@@ -83,12 +83,8 @@ class EditEvent extends React.Component {
                     <Input onChange = { this.onChange } type="time" value={eventAttrs.time} name="time" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="lat">Latitude</Label>
-                    <Input onChange = { this.onChange } type="float" value={eventAttrs.lat} name="lat" />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="lng">Longitude</Label>
-                    <Input onChange = { this.onChange } type="float" value={eventAttrs.lng} name="lng" />
+                    <Label for="address">Address</Label>
+                    <Input onChange = { this.onChange } type="text" value={eventAttrs.address} name="address" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="description">Description</Label>

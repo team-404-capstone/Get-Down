@@ -29,9 +29,13 @@ class Event extends React.Component {
           <Container>
             <h1>Events</h1>
              <br/>
+             
              { logged_in &&
-               <Button color = 'primary' href = '/NewEvent'>Create Event</Button>
+               <Button color = 'primary' href = '/NewEvent'>
+                  Create Event
+               </Button>
              }
+             
              <br/>
              <br/>
               <ListGroup>

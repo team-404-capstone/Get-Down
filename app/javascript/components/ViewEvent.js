@@ -34,7 +34,10 @@ class ViewEvent extends React.Component {
   render () {
     const {
       attends,
-      deleteAttend
+      deleteAttend,
+      logged_in,
+      current_user_id,
+      current_user
     } = this.props
     
     return (
@@ -53,7 +56,13 @@ class ViewEvent extends React.Component {
                   <CardText>Address: {this.state.eventAttrs.address}</CardText>
                   <CardText>Description: {this.state.eventAttrs.description}</CardText>
                   <Button href = '/Event'>Back</Button>
-                  <Button color = 'success' onClick = {this.localAttend}>Join</Button>
+                
+                      { logged_in &&
+                          <Button color = 'success' onClick = {this.localAttend}>
+                            Join
+                          </Button>
+                      }
+                  
                 </CardBody>
               </Card>
             </div>
@@ -66,7 +75,11 @@ class ViewEvent extends React.Component {
                 return(
                   <div key = {index}>
                      <ListGroupItem>{attend.user_email}
-                         <Button color = 'danger' onClick = {() => deleteAttend(attend.id)}>Leave</Button>
+                       { attend.user_id === current_user_id &&
+                          <div>
+                             <Button color = 'danger' onClick = {() => deleteAttend(attend.id)}>Leave</Button>
+                          </div>
+                       }
                      </ListGroupItem>
                   </div>
                  )

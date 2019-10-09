@@ -194,7 +194,10 @@ class MainApp extends React.Component {
                   createAttend={this.createAttend} 
                   deleteAttend={this.deleteAttend} 
                   viewEvent={this.viewEvent}
-                  getAttend={this.getAttend}/>
+                  getAttend={this.getAttend}
+                  logged_in={this.props.logged_in}
+                  current_user={this.props.current_user}
+                  current_user_id={this.props.current_user_id}/>
               )
             }}/>
 

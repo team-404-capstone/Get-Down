@@ -77,7 +77,8 @@ class ViewEvent extends React.Component {
                      <ListGroupItem>{attend.user_email}
                        { attend.user_id === current_user_id &&
                           <div>
-                             <Button color = 'danger' onClick = {() => deleteAttend(attend.id)}>Leave</Button>
+                             <Button color = 'danger' onClick={e =>
+                              window.confirm("Are you sure you want to leave?") && deleteAttend(attend.id)}>Leave</Button>
                           </div>
                        }
                      </ListGroupItem>

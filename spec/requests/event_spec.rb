@@ -1,29 +1,7 @@
 require 'rails_helper'
 
-
-# test 'GET new' do
-# # Mimic the router behavior of setting the Devise scope through the env.
-# @request.env['devise.mapping'] = Devise.mappings[:user]
-#
-# # Use the sign_in helper to sign in a fixture `User` record.
-# sign_in users(:alice)
-#
-# get :new
-#
-# # assert something
-# end
-#
-# describe "GET #index" do
-#   before do
-#     get "/"
-#   end
-#   it "returns http success" do
-#     expect(response).to have_http_status(:success)
-#   end
-# end
-
 describe "Events API" do
-    include Devise::Test::IntegrationHelpers
+  include Devise::Test::IntegrationHelpers
   context "when logged in" do
     it "gets a list of events" do
       u = User.create(email: "test@gmail.com", password: "testing")
@@ -57,6 +35,43 @@ describe "Events API" do
       new_event = Event.first
 
       expect(new_event.description).to eq("yeye")
+    end
+
+    it "updates an event" do
+     u = User.create!(email: "test@gmail.com", password: "testing")
+     event = Event.create(name: "Cool", date: "11/11/1989", time: "12:12PM", description: "nono", address:"2900 Sixth Street", user_id: u.id)
+        post_params = {
+          event: {
+            name: "Cool",
+            date: "11/11/1989",
+            time: "11:11AM",
+            description: "yeye",
+            address:"2900 Sixth Street",
+            user_id: u.id
+          }
+        }
+
+      sign_in u
+      patch "/events/#{event.id}.json", params: post_params
+
+      expect(response).to have_http_status(200)
+
+      event.reload
+
+      expect(event.description).to eq("yeye")
+    end
+    it "deletes an event" do
+     u = User.create!(email: "test@gmail.com", password: "testing")
+     event = Event.create(name: "Cool", date: "11/11/1989", time: "12:12PM", description: "nono", address:"2900 Sixth Street", user_id: u.id)
+
+      sign_in u
+      delete "/events/#{event.id}.json"
+
+      expect(response).to have_http_status(200)
+
+      event = Event.first
+
+      expect(event).to be_nil
     end
   end
 end

@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     def update
         event = current_user.events.find(params[:id])
         if event.update(post_params)
-            render :show
+            render json: event
         else
             render json: {error: 'could not update'}, status: 401
         end

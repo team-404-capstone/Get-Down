@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     before_action :authenticate_user!, only: [:create, :destroy, :update]
 
     def index
-        events = Event.all
+        events = Event.order(:date).order(:time).order(:name)
         render json: events
     end
 

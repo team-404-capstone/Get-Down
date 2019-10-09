@@ -9,17 +9,14 @@ class ViewEvent extends React.Component {
     super(props)
     this.state = {  
       eventAttrs: {},
+      attendStatus: false
     };
+   
   }
   
   componentDidMount() {
     this.getEvent();
-  }
-  
-  componentDidUpdate(prevProps) {
-    if(prevProps.match.params.id != this.props.match.params.id) {
-      this.getEvent();
-    }
+    this.props.getAttend(this.props.match.params.id)
   }
   
   getEvent() {
@@ -29,11 +26,18 @@ class ViewEvent extends React.Component {
     });
   }
   
+  localAttend = (el) => {
+    el.preventDefault(),
+    this.props.createAttend(this.props.match.params.id)
+  }
+  
   render () {
     const {
-      Events,
-      showEvent,
-      viewEvent
+      attends,
+      deleteAttend,
+      logged_in,
+      current_user_id,
+      current_user
     } = this.props
     
     return (
@@ -52,9 +56,36 @@ class ViewEvent extends React.Component {
                   <CardText>Address: {this.state.eventAttrs.address}</CardText>
                   <CardText>Description: {this.state.eventAttrs.description}</CardText>
                   <Button href = '/Event'>Back</Button>
+                
+                      { logged_in &&
+                          <Button color = 'success' onClick = {this.localAttend}>
+                            Join
+                          </Button>
+                      }
+                  
                 </CardBody>
               </Card>
             </div>
+        </Jumbotron>
+        <Jumbotron>
+        <h1>Attendees</h1>
+          <div>
+            <ListGroup>
+              { attends.map((attend, index) => {
+                return(
+                  <div key = {index}>
+                     <ListGroupItem>{attend.user_email}
+                       { attend.user_id === current_user_id &&
+                          <div>
+                             <Button color = 'danger' onClick = {() => deleteAttend(attend.id)}>Leave</Button>
+                          </div>
+                       }
+                     </ListGroupItem>
+                  </div>
+                 )
+              })}
+            </ListGroup>
+          </div>
         </Jumbotron>
       </React.Fragment>
     );

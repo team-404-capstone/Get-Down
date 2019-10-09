@@ -63,14 +63,6 @@ class NewEvent extends React.Component {
                   <Input onChange = { this.onChange }  type="time" name="time" placeholder="Time" />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="lat">Latitude</Label>
-                  <Input onChange = { this.onChange }  type="float" name="lat" placeholder="Float" />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="lng">Longitude</Label>
-                  <Input onChange = { this.onChange }  type="float" name="lng" placeholder="Float" />
-                </FormGroup>
-                <FormGroup>
                   <Label for="description">Description</Label>
                   <Input onChange = { this.onChange }  type="text" name="description" placeholder="Description" />
                 </FormGroup>

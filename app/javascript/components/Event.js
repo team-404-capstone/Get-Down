@@ -31,9 +31,13 @@ class Event extends React.Component {
             <h1>Events</h1>
           </center>
              <br/>
+             
              { logged_in &&
-               <Button color = 'primary' href = '/NewEvent'>Create Event</Button>
+               <Button color = 'primary' href = '/NewEvent'>
+                  Create Event
+               </Button>
              }
+             
              <br/>
              <br/>
               <CardGroup>
@@ -48,11 +52,15 @@ class Event extends React.Component {
                     { event.user_id === current_user_id &&
                       <div>
                         <Button color = 'secondary' href = {`/EditEvent/${event.id}`}>Edit Event</Button>
-                        <Button color = 'warning' onClick = {() => deleteEvent(event.id)}>Delete Event</Button>
+                        <Button color = 'warning' onClick={e =>
+                          window.confirm("Are you sure you wish to delete this item?") &&
+                          deleteEvent(event.id)}>Delete Event</Button>
                       </div>
                     }
+
                     </center>
                    </Card>
+
                   )
                 })
                }

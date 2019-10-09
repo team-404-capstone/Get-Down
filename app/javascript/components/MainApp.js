@@ -18,10 +18,14 @@ class MainApp extends React.Component {
     super(props)
     this.state = {
       events: [],
+      attends: [],
       success: false
     }
     this.getEvent()
+    
   }
+
+                  // =========================================== EVENT METHODS
 
   getEvent = () => {
     /* global fetch */
@@ -93,6 +97,45 @@ class MainApp extends React.Component {
       })
     }
 
+               // ========================================== ATTEND METHODS  
+   getAttend = (id) => {
+      return fetch(`../attends?event_id=${id}`)
+      .then(resp => {
+        return resp.json()
+      })
+      .then(attends => {
+        this.setState({attends})
+      })
+    }
+  
+    createAttend = (id) => {
+      return fetch('/attends',{
+        method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({attend: {event_id: id}})
+          })
+          .then(resp => {
+            if(resp.status === 201){
+              this.getAttend(id)
+            }
+      })
+    }
+    
+    deleteAttend = (id) => {
+      return fetch(`/attends/${id}`, {
+        method: 'DELETE'
+      })
+      .then((resp) => {
+        if(resp.status === 200){
+          this.getAttend()
+          window.location.href = '/Event'
+        }
+      })
+    }
+       
+ 
 
   render () {
     const {
@@ -101,7 +144,10 @@ class MainApp extends React.Component {
       sign_out_route,
       current_user,
       current_user_id,
-      Events
+      Events,
+      createAttend,
+      deleteAttend,
+      getAttend
     } = this.props
 
     return (
@@ -144,8 +190,16 @@ class MainApp extends React.Component {
               return(
                 <ViewEvent {...routeProps}
                   events={this.state.events}
-                  showEvent={this.showEvent}
-                  viewEvent={this.viewEvent}/>
+
+                  attends={this.state.attends}
+                  showEvent={this.showEvent} 
+                  createAttend={this.createAttend} 
+                  deleteAttend={this.deleteAttend} 
+                  viewEvent={this.viewEvent}
+                  getAttend={this.getAttend}
+                  logged_in={this.props.logged_in}
+                  current_user={this.props.current_user}
+                  current_user_id={this.props.current_user_id}/>
               )
             }}/>
 
@@ -160,13 +214,14 @@ class MainApp extends React.Component {
           <Route path = '/Event'
             render = {(routeProps) => {
             return(
-              <Event {...routeProps}
-                events={this.state.events}
-                deleteEvent = {this.deleteEvent}
-                editEvent = {this.editEvent}
-                viewEvent = {this.viewEvent}
-                createEvent = {this.createEvent}
-                sign_in_route={this.props.sign_in_route}
+              <Event {...routeProps} 
+                events={this.state.events} 
+                getAttend={this.state.getAttend} 
+                deleteEvent = {this.deleteEvent} 
+                editEvent = {this.editEvent}  
+                viewEvent = {this.viewEvent}  
+                createEvent = {this.createEvent} 
+                sign_in_route={this.props.sign_in_route} 
                 sign_out_route={this.props.sign_out_route}
                 current_user={this.props.current_user}
                 current_user_id={this.props.current_user_id}

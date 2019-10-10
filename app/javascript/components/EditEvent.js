@@ -80,7 +80,7 @@ class EditEvent extends React.Component {
                   </FormGroup>
                   <FormGroup>
                     <Label for="time">Time</Label>
-                    <Input onChange = { this.onChange } type="time" value={eventAttrs.time} name="time" />
+                    <Input onChange = { this.onChange } type="text" value={eventAttrs.time} name="time" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="address">Address</Label>

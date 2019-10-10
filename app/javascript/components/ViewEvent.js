@@ -9,7 +9,11 @@ class ViewEvent extends React.Component {
     super(props)
     this.state = {  
       eventAttrs: {},
-      attendStatus: false
+      attendStatus: false,
+      form: {
+        comment: "",
+        event_id: this.props.match.params.id
+      }
     };
    
   }
@@ -17,6 +21,7 @@ class ViewEvent extends React.Component {
   componentDidMount() {
     this.getEvent();
     this.props.getAttend(this.props.match.params.id)
+    this.props.getComment(this.props.match.params.id)
   }
   
   getEvent() {
@@ -31,13 +36,26 @@ class ViewEvent extends React.Component {
     this.props.createAttend(this.props.match.params.id)
   }
   
+  onChange = (e) => {
+    let {form} = this.state
+    form[e.target.name] = e.target.value
+    this.setState({form: form})
+  }
+  
+   localSubmit = (el) => {
+    el.preventDefault(),
+    this.props.createComment(this.state.form)
+  }
+  
   render () {
     const {
       attends,
       deleteAttend,
       logged_in,
       current_user_id,
-      current_user
+      current_user,
+      deleteComment,
+      comments
     } = this.props
     
     return (
@@ -85,6 +103,34 @@ class ViewEvent extends React.Component {
                   </div>
                  )
               })}
+            </ListGroup>
+          </div>
+        </Jumbotron>
+        <Jumbotron>
+        <h1>Discussion</h1>
+          <div>
+            <Form>
+                <FormGroup>
+                  <Label for="comment">Comment</Label>
+                  <Input onChange = { this.onChange }  type="string" name="comment"placeholder="Enter Comment Here" />
+                </FormGroup>
+                <Button onClick = {this.localSubmit} >Post Comment</Button>
+            </Form>
+            <ListGroup>
+            { comments.map((comment, index) => {
+              return(
+              <div key = {index}>
+                <ListGroupItem>{comment.user_email} says: {comment.comment}
+                {console.log(comment.comment)}
+                  { comment.user_id === current_user_id && 
+                    <div>
+                      <Button color = 'danger' onClick={e => window.confirm("Are you sure you want to delete this comment?") && deleteComment(comment.id)}>Delete</Button>
+                    </div>
+                  }
+                  </ListGroupItem>
+                </div>
+              )
+            })}
             </ListGroup>
           </div>
         </Jumbotron>

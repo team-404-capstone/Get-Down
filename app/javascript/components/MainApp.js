@@ -19,7 +19,8 @@ class MainApp extends React.Component {
     this.state = {
       events: [],
       attends: [],
-      success: false
+      success: false,
+      comments: []
     }
     this.getEvent()
     
@@ -98,6 +99,7 @@ class MainApp extends React.Component {
     }
 
                // ========================================== ATTEND METHODS  
+               
    getAttend = (id) => {
       return fetch(`../attends?event_id=${id}`)
       .then(resp => {
@@ -134,8 +136,46 @@ class MainApp extends React.Component {
         }
       })
     }
-       
- 
+        
+      // ========================================= COMMENT METHODS
+  
+  getComment = (id) => {
+     return fetch(`../comments?event_id=${id}`)
+      .then(resp => {
+        return resp.json()
+      })
+      .then(comments => {
+        this.setState({comments})
+      })
+  }   
+  
+  createComment = (comment) => {
+    return fetch('/comments',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({comment: comment})
+    })
+    .then(resp => {
+      if(resp.status === 201){
+        this.getComment(comment)
+      }
+    })
+  }
+  
+  deleteComment = (id) => {
+      return fetch(`/comments/${id}`, {
+        method: 'DELETE'
+      })
+      .then((resp) => {
+        if(resp.status === 200){
+          this.getComment()
+        }
+      })
+    }
+
+  // ========================================= RENDER STARTS HERE
 
   render () {
     const {
@@ -147,7 +187,11 @@ class MainApp extends React.Component {
       Events,
       createAttend,
       deleteAttend,
-      getAttend
+      getAttend,
+      getComment,
+      createComment,
+      deleteComment
+      
     } = this.props
 
     return (
@@ -190,7 +234,6 @@ class MainApp extends React.Component {
               return(
                 <ViewEvent {...routeProps}
                   events={this.state.events}
-
                   attends={this.state.attends}
                   showEvent={this.showEvent} 
                   createAttend={this.createAttend} 
@@ -199,7 +242,11 @@ class MainApp extends React.Component {
                   getAttend={this.getAttend}
                   logged_in={this.props.logged_in}
                   current_user={this.props.current_user}
-                  current_user_id={this.props.current_user_id}/>
+                  current_user_id={this.props.current_user_id}
+                  getComment={this.getComment}
+                  createComment={this.createComment}
+                  deleteComment={this.deleteComment}
+                  comments={this.state.comments}/>
               )
             }}/>
 

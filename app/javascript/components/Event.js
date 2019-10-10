@@ -31,7 +31,7 @@ class Event extends React.Component {
             <h1>Events</h1>
       
              <br/>
-             
+
              { logged_in &&
                <Button color = 'primary' href = '/NewEvent'>
                   Create Event
@@ -44,6 +44,7 @@ class Event extends React.Component {
               <CardGroup>
                 { events.map((event, index) => {
                   return (
+                   <Col xs={6} md={4} lg={2}>
                    <Card key = {index}>
                        <CardTitle>{event.name}</CardTitle>
                          <CardText>DATE: {event.date} | TIME: {event.time} | ABOUT: {event.description} </CardText> 

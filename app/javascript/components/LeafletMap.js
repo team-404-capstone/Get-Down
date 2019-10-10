@@ -24,21 +24,23 @@ export default class MyMap extends Component{
       minLng: 0
       }
   }
-  addMarker(latLng){
-    this.setState({markers: [...this.state.markers,[latLng.y, latLng.x]]})
+  addMarker(addrs){
+    this.setState({markers: [...this.state.markers,[addrs.latLng.y, addrs.latLng.x, addrs.name, addrs.time, addrs.date]]})
+    console.log(addrs)
   }
 
   componentDidUpdate(prevProps){
     const { events } = this.props
-    const address = events.map(function(item) { return item.address})
+    const addresses = events.map(function(item) { return {address: item.address, name: item.name, time: item.time, date: item.date}
+    })
     const provider = new OpenStreetMapProvider()
-    console.log(address)
+    console.log(addresses)
     if(prevProps.events != events){
-      const latLngs = address.map((address)=>{
+      const latLngs = addresses.map((address)=>{
         return provider.search({
-          query: address
+          query: address.address
         }).then((result)=>{
-          this.addMarker(result[0])
+          this.addMarker({latLng: result[0], name: address.name, time: address.time, date: address.date})
           return result[0]
         })
       })
@@ -110,7 +112,14 @@ export default class MyMap extends Component{
           />
           {this.state.markers.map((markers, index)=>{
               return(
-                  <Marker key={index} position={markers}>
+                  <Marker key={index} position={[markers[0], markers[1]]}>
+                  <Popup>
+                      {"Name:"+ " " + markers[2]}
+                    <br />
+                      {"Time:"+ " " + markers[3]}
+                    <br />
+                      {"Date:"+ " " + markers[4]}
+                  </Popup>
                   </Marker>
               )
           })}

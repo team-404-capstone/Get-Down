@@ -60,7 +60,7 @@ class NewEvent extends React.Component {
                 </FormGroup>
                 <FormGroup>
                   <Label for="time">Time</Label>
-                  <Input onChange = { this.onChange }  type="time" name="time" placeholder="Time" />
+                  <Input onChange = { this.onChange }  type="text" name="time" placeholder="Time" />
                 </FormGroup>
                 <FormGroup>
                   <Label for="description">Description</Label>

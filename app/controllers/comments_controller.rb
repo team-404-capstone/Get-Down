@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
     end
     
     def create
-        comment = current_user.comments.create comments_params
+        pp params
+        comment = current_user.comments.create comment_params
         render json: comment, status: 201
         p comment
     end
@@ -26,7 +27,7 @@ class CommentsController < ApplicationController
     
     private
     
-    def comments_params
-        params.require(:comment).permit(:event_id)
+    def comment_params
+        params.require(:comment).permit(:event_id, :comment)
     end
 end

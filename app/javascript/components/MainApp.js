@@ -149,17 +149,17 @@ class MainApp extends React.Component {
       })
   }   
   
-  createComment = (id) => {
+  createComment = (comment) => {
     return fetch('/comments',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({comment: {event_id: id}})
+      body: JSON.stringify({comment: comment})
     })
     .then(resp => {
       if(resp.status === 201){
-        this.getComment(id)
+        this.getComment(comment)
       }
     })
   }
@@ -174,6 +174,8 @@ class MainApp extends React.Component {
         }
       })
     }
+
+  // ========================================= RENDER STARTS HERE
 
   render () {
     const {
@@ -232,7 +234,6 @@ class MainApp extends React.Component {
               return(
                 <ViewEvent {...routeProps}
                   events={this.state.events}
-
                   attends={this.state.attends}
                   showEvent={this.showEvent} 
                   createAttend={this.createAttend} 

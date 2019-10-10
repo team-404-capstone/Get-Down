@@ -11,7 +11,8 @@ class ViewEvent extends React.Component {
       eventAttrs: {},
       attendStatus: false,
       form: {
-        comment: ""
+        comment: "",
+        event_id: this.props.match.params.id
       }
     };
    
@@ -20,6 +21,7 @@ class ViewEvent extends React.Component {
   componentDidMount() {
     this.getEvent();
     this.props.getAttend(this.props.match.params.id)
+    this.props.getComment(this.props.match.params.id)
   }
   
   getEvent() {
@@ -118,7 +120,8 @@ class ViewEvent extends React.Component {
             { comments.map((comment, index) => {
               return(
               <div key = {index}>
-                <ListGroupItem>{comment.user_email} says: {comment}
+                <ListGroupItem>{comment.user_email} says: {comment.comment}
+                {console.log(comment.comment)}
                   { comment.user_id === current_user_id && 
                     <div>
                       <Button color = 'danger' onClick={e => window.confirm("Are you sure you want to delete this comment?") && deleteComment(comment.id)}>Delete</Button>

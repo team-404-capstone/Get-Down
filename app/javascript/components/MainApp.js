@@ -51,7 +51,6 @@ class MainApp extends React.Component {
         .then(resp => {
           if(resp.status === 201){
             this.getEvent()
-            console.log("created")
           }
     })
   }
@@ -159,7 +158,8 @@ class MainApp extends React.Component {
     })
     .then(resp => {
       if(resp.status === 201){
-        this.getComment(comment)
+        this.getComment(comment),
+        window.location.reload();
       }
     })
   }
@@ -170,7 +170,8 @@ class MainApp extends React.Component {
       })
       .then((resp) => {
         if(resp.status === 200){
-          this.getComment()
+          this.getComment(),
+          window.location.reload();
         }
       })
     }

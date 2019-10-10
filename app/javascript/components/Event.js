@@ -31,18 +31,20 @@ class Event extends React.Component {
             <h1>Events</h1>
           </center>
              <br/>
-             
+
              { logged_in &&
                <Button color = 'primary' href = '/NewEvent'>
                   Create Event
                </Button>
              }
-             
+
              <br/>
              <br/>
-              <CardGroup>
+             <Row style ={{display:"flex", justifyContent:"center", flexDirection:"row"}}>
+              <CardGroup >
                 { events.map((event, index) => {
                   return (
+                   <Col xs={6} md={4} lg={2}>
                    <Card key = {index}>
                    <center>
                    <CardTitle>{event.name}</CardTitle>
@@ -60,11 +62,12 @@ class Event extends React.Component {
 
                     </center>
                    </Card>
-
+                   </Col>
                   )
                 })
                }
               </CardGroup>
+              </Row>
             </Container>
           </Jumbotron>
         </Container>

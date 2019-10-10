@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Button, ListGroup, CardGroup, ListGroupItem, Jumbotron, Container, Card, CardTitle, CardText, Row, Col} from 'reactstrap'
+import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Button, ButtonGroup, CardGroup, CardFooter, ListGroupItem, Jumbotron, Container, Card, CardTitle, CardText, Row, Col} from 'reactstrap'
 
 
 class Event extends React.Component {
@@ -22,14 +22,14 @@ class Event extends React.Component {
     return (
       <React.Fragment>
 
-      <Container>
+      <Container fluid>
         <br/>
         <br/>
         <Jumbotron>
           <Container>
           <center>
             <h1>Events</h1>
-          </center>
+      
              <br/>
              
              { logged_in &&
@@ -37,34 +37,39 @@ class Event extends React.Component {
                   Create Event
                </Button>
              }
-             
+            </center>
              <br/>
              <br/>
+             <div>
               <CardGroup>
                 { events.map((event, index) => {
                   return (
                    <Card key = {index}>
-                   <center>
-                   <CardTitle>{event.name}</CardTitle>
-                   <CardText>DATE: {event.date} | TIME: {event.time} | ABOUT: {event.description} </CardText>
-                   <br/>
-                   <Button style={{width: '120px'}} color = 'primary' href = {`/ViewEvent/${event.id}`} onClick = {() => viewEvent(event.id)}>View Event</Button>
-                    { event.user_id === current_user_id &&
-                      <div>
-                        <Button color = 'secondary' href = {`/EditEvent/${event.id}`}>Edit Event</Button>
-                        <Button color = 'warning' onClick={e =>
-                          window.confirm("Are you sure you wish to delete this item?") &&
-                          deleteEvent(event.id)}>Delete Event</Button>
-                      </div>
-                    }
-
-                    </center>
+                       <CardTitle>{event.name}</CardTitle>
+                         <CardText>DATE: {event.date} | TIME: {event.time} | ABOUT: {event.description} </CardText> 
+                         <CardFooter>
+                        <center>
+                        <Button style={{ backgroundColor: "#fff"}} href = {`/ViewEvent/${event.id}`} onClick = {() => viewEvent(event.id)}>View Event</Button>
+                            { event.user_id === current_user_id &&
+                              <div>
+                             
+                              
+                                <Button style={{ backgroundColor: "#fff"}} href = {`/EditEvent/${event.id}`}>Edit Event</Button>
+                                <br />
+                                <Button style={{ backgroundColor: "#fff"}} onClick={e =>
+                                  window.confirm("Are you sure you wish to delete this item?") &&
+                                  deleteEvent(event.id)}>Delete Event</Button>
+                            
+                              </div>
+                          }
+                          </center>
+                          </CardFooter>
                    </Card>
-
                   )
                 })
                }
               </CardGroup>
+              </div>
             </Container>
           </Jumbotron>
         </Container>

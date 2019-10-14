@@ -6,11 +6,12 @@ ______________
 3.Technology:
 4.Features:
 5.How to use:
-6.Credit:
 _______________
 
 PURPOSE
-Get Down brings energy and liveliness to the general public by connecting them through events in real time.
+
+Get Down brings energy and liveliness to the general public
+by connecting them through events in real time.
 ________________
 
 SKILLS GAINED
@@ -35,7 +36,7 @@ _______________________________________
 
 HOW TO USE
 
-Here is our app deployed on Heroku "link"
-_______________________________________
+Here is our app deployed on Heroku https://quiet-peak-08707.herokuapp.com/. Try it out.
+
 
 

@@ -10,12 +10,8 @@ const items = [
     altText: 'Slide 1',
   },
   {
-    src: 'https://www.maxpixel.net/static/photo/2x/Venice-California-Beach-Playing-Basketball-Game-1978357.jpg',
-    altText: 'Slide 2',
-  },
-  {
     src: 'https://explorespain.org/wp-content/uploads/2019/02/Tumb_sanjuan.jpg',
-    altText: 'Slide 3',
+    altText: 'Slide 2',
     },
     {
       src: 'https://c1.staticflickr.com/3/2858/9989653436_d67cf96f12_b.jpg',

@@ -1,24 +1,44 @@
-# README
+GET DOWN
+______________
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1.Purpose:
+2.Skills:
+3.Technology:
+4.Features:
+5.How to use:
+6.Credit:
+_______________
 
-Things you may want to cover:
+PURPOSE
 
-* Ruby version
+Get Down was created in order to get people with alike minds/hobbies
+To get together in groups or to simply sign up to an event.
 
-* System dependencies
+________________
 
-* Configuration
+SKILLS GAINED
+...
+________________
 
-* Database creation
+TECHNOLOGY
 
-* Database initialization
+React.js, React Router, Ruby on Rails,
 
-* How to run the test suite
+JBuilder,Devise, React Bootstrap
 
-* Services (job queues, cache servers, search engines, etc.)
+Javascript, Ruby, CSS
 
-* Deployment instructions
+Leaflet API, Open Map Provider API
+_______________________________________
 
-* ...
+FEATURES
+
+As a user I can sign-in look up events in a map or list view, attend and comment on said events or even create your own.
+_______________________________________
+
+HOW TO USE
+
+Here is our app deployed on Heroku "link"
+_______________________________________
+
+

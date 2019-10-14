@@ -322,7 +322,7 @@
    font-family: "Montserrat Alternates";
    font-weight: 500;
    line-height: 1.2;
-   color: inherit; }
+   color: #4D4740; }
 
  h1, .h1 {
    font-size: 2.5rem; }
@@ -2479,18 +2479,21 @@
 
  .card {
    position: relative;
+   text-align: center;
    display: flex;
    justify-content: center;
    flex-direction: row;
    flex-wrap: wrap;
    min-width: 25%;
+   max-width: 25%;
+
    margin-left: 0rem;
    margin-right: 2rem;
    margin-top: 1rem;
    word-wrap: break-word;
    background-color: #fff;
    background-clip: border-box;
-   border: 2px solid red;
+   border: 2px solid #4D4740;
    border-radius: 0.25rem; }
    .card > hr {
      margin-right: 0;
@@ -2503,10 +2506,13 @@
      border-bottom-left-radius: 0.25rem; }
 
  .card-body {
+   justify-content: center;
    flex: 1 1 auto;
+   text-align: center;
    padding: 1.25rem; }
 
  .card-title {
+   justify-content: center;
    margin-bottom: 0.75rem; }
 
  .card-subtitle {
@@ -2514,6 +2520,7 @@
    margin-bottom: 0; }
 
  .card-text:last-child {
+   justify-content: center;
    margin-bottom: 0; }
 
  .card-link:hover {
@@ -2536,7 +2543,7 @@
    padding: 0.75rem 1.25rem;
    background-color: #fff;
    }
-   
+
 
  .card-header-tabs {
    margin-right: -0.625rem;
@@ -2590,6 +2597,7 @@
 
  .card-group {
    display: flex;
+   justify-content: center;
    flex-direction: row; }
    .card-group > .card {
      margin-bottom: 15px; }
@@ -2601,7 +2609,7 @@
          margin-bottom: 0; }
          .card-group > .card + .card {
            margin-left: 0;
-           border-left: 2px solid; }
+           border-left: 2px solid #4D4740; }
          .card-group > .card:first-child {
            border-top-right-radius: 0;
            border-bottom-right-radius: 0; }
@@ -3517,7 +3525,9 @@
    position: relative;
    display: none;
    align-items: center;
-   width: 100%;
+   min-width: 100%;
+   max-height: 50%;
+   min-height: 50%;
    transition: transform 0.6s ease;
    backface-visibility: hidden;
    perspective: 1000px; }

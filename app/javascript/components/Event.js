@@ -29,7 +29,7 @@ class Event extends React.Component {
           <Container>
           <center>
             <h1>Events</h1>
-      
+
              <br/>
 
              { logged_in &&
@@ -44,27 +44,31 @@ class Event extends React.Component {
               <CardGroup>
                 { events.map((event, index) => {
                   return (
-                   <Col xs={6} md={4} lg={2}>
                    <Card key = {index}>
-                       <CardTitle>{event.name}</CardTitle>
-                         <CardText>DATE: {event.date} | TIME: {event.time} | ABOUT: {event.description} </CardText> 
-                         <CardFooter>
+                   <div>
+                   <Button style={{ backgroundColor: "#fff"}} href = {`/ViewEvent/${event.id}`} onClick = {() => viewEvent(event.id)}>View Event</Button>
+                   <br/>
+                   <br/>
+                       <CardTitle>{event.name}</CardTitle><br/>
+                         <CardText>DATE: {event.date}</CardText><br/>
+                         <CardText>TIME: {event.time}</CardText><br/>
+                         <CardText>ABOUT: {event.description}</CardText><br/>
+
+
+
                         <center>
-                        <Button style={{ backgroundColor: "#fff"}} href = {`/ViewEvent/${event.id}`} onClick = {() => viewEvent(event.id)}>View Event</Button>
+
                             { event.user_id === current_user_id &&
                               <div>
-                             
-                              
                                 <Button style={{ backgroundColor: "#fff"}} href = {`/EditEvent/${event.id}`}>Edit Event</Button>
                                 <br />
                                 <Button style={{ backgroundColor: "#fff"}} onClick={e =>
                                   window.confirm("Are you sure you wish to delete this item?") &&
                                   deleteEvent(event.id)}>Delete Event</Button>
-                            
                               </div>
                           }
                           </center>
-                          </CardFooter>
+                          </div>
                    </Card>
                   )
                 })

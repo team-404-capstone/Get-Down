@@ -1,23 +1,24 @@
 <section id="cards" class="container pb-5">
+    <center>
   <div class="d-flex my-3">
     <div class="jumbotron w-90 py-5 mx-auto">
     <div class="row">
       <div class="col-lg-5 mb-4">
-        <div class="card bg-primary text-white h-90">
+        <div class="bg-primary text-white h-90">
           <div class="card-body d-flex flex-column align-items-start">
           <center>
-          <h2 class="card-title">Sign up</h2>
-          
-          
+          <h2 class="card-title text-white">Sign up</h2>
+
+
           <br/>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
-          
+
             <div class="field">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
-          
+
             <div class="field">
               <%= f.label :password %>
               <% if @minimum_password_length %>
@@ -25,19 +26,19 @@
               <% end %><br />
               <%= f.password_field :password, autocomplete: "new-password" %>
             </div>
-          
+
             <div class="field">
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
             </div>
             <br/>
-          
+
             <div class="actions">
               <%= f.submit "Sign up" %>
             </div>
-            
+
           <% end %>
-          
+
           <br/>
           <button class="actions"><a href="/">Home</a></button>
           </center>
@@ -47,4 +48,5 @@
         </div>
       </div>
     </div>
+    </center>
 </section>

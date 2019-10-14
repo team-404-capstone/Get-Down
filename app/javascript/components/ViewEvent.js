@@ -7,7 +7,7 @@ import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Nav, Navbar
 class ViewEvent extends React.Component {
   constructor(props){
     super(props)
-    this.state = {  
+    this.state = {
       eventAttrs: {},
       attendStatus: false,
       form: {
@@ -15,38 +15,38 @@ class ViewEvent extends React.Component {
         event_id: this.props.match.params.id
       }
     };
-   
+
   }
-  
+
   componentDidMount() {
     this.getEvent();
     this.props.getAttend(this.props.match.params.id)
     this.props.getComment(this.props.match.params.id)
   }
-  
+
   getEvent() {
     const { showEvent } = this.props;
     showEvent(this.props.match.params.id).then(response => {
       this.setState({ eventAttrs: response });
     });
   }
-  
+
   localAttend = (el) => {
     el.preventDefault(),
     this.props.createAttend(this.props.match.params.id)
   }
-  
+
   onChange = (e) => {
     let {form} = this.state
     form[e.target.name] = e.target.value
     this.setState({form: form})
   }
-  
+
    localSubmit = (el) => {
     el.preventDefault(),
     this.props.createComment(this.state.form)
   }
-  
+
   render () {
     const {
       attends,
@@ -57,7 +57,7 @@ class ViewEvent extends React.Component {
       deleteComment,
       comments
     } = this.props
-    
+
     return (
       <React.Fragment>
       <br/>
@@ -65,24 +65,26 @@ class ViewEvent extends React.Component {
         <Jumbotron>
           <h1>View Event</h1>
              <div>
-              <Card>
-                <CardImg top width="75%"/>
-                <CardBody>
+
+
                   <CardTitle>Event: {this.state.eventAttrs.name}</CardTitle>
                   <CardText>Date: {this.state.eventAttrs.date}</CardText>
                   <CardText>Time: {this.state.eventAttrs.time}</CardText>
                   <CardText>Address: {this.state.eventAttrs.address}</CardText>
                   <CardText>Description: {this.state.eventAttrs.description}</CardText>
-                  <Button href = '/Event'>Back</Button>
-                
+
+
                       { logged_in &&
-                          <Button color = 'success' onClick = {this.localAttend}>
+                          <Button color="primary" onClick = {this.localAttend}>
                             Join
                           </Button>
                       }
-                  
-                </CardBody>
-              </Card>
+                      <br />
+                  <Button color="primary" href = '/Event'>Back</Button>
+
+
+
+
             </div>
         </Jumbotron>
         <Jumbotron>
@@ -95,7 +97,7 @@ class ViewEvent extends React.Component {
                      <ListGroupItem>{attend.user_username}
                        { attend.user_id === current_user_id &&
                           <div>
-                             <Button color = 'danger' onClick={e =>
+                             <Button color="#fff" onClick={e =>
                               window.confirm("Are you sure you want to leave?") && deleteAttend(attend.id)}>Leave</Button>
                           </div>
                        }
@@ -114,7 +116,7 @@ class ViewEvent extends React.Component {
                   <Label for="comment">Comment</Label>
                   <Input onChange = { this.onChange }  type="string" name="comment"placeholder="Enter Comment Here" />
                 </FormGroup>
-                <Button onClick = {this.localSubmit} >Post Comment</Button>
+                <Button color="primary" onClick = {this.localSubmit} >Post Comment</Button>
             </Form>
             <ListGroup>
             { comments.map((comment, index) => {
@@ -122,7 +124,7 @@ class ViewEvent extends React.Component {
               <div key = {index}>
                 <ListGroupItem>{comment.user_username} says: {comment.comment}
                 {console.log(comment.comment)}
-                  { comment.user_id === current_user_id && 
+                  { comment.user_id === current_user_id &&
                     <div>
                       <Button color = 'danger' onClick={e => window.confirm("Are you sure you want to delete this comment?") && deleteComment(comment.id)}>Delete</Button>
                     </div>

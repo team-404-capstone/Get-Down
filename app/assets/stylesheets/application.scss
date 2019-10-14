@@ -66,6 +66,10 @@
    -ms-overflow-style: scrollbar;
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
+ #card-width{
+   width: 800px;
+ }
+
  @-ms-viewport {
    width: device-width; }
 
@@ -78,10 +82,10 @@
    font-size: 1rem;
    font-weight: 400;
    line-height: 1.5;
-   color: #E85A4F;
+   color: #7e7a76;
    text-align: left;
 
-   background-color: #D8C3A5; }
+   background-color: #2F3C7E; }
 
  [tabindex="-1"]:focus {
    outline: 0 !important; }
@@ -96,6 +100,7 @@
    margin-bottom: 0.5rem; }
 
  p {
+   color: #7e7a76;
    margin-top: 0;
    margin-bottom: 1rem; }
 
@@ -212,6 +217,7 @@
 
  label {
    display: inline-block;
+   color: #7e7a76;
    margin-bottom: 0.5rem; }
 
  button {
@@ -322,7 +328,7 @@
    font-family: "Montserrat Alternates";
    font-weight: 500;
    line-height: 1.2;
-   color: #4D4740; }
+   color: #2F3C7E; }
 
  h1, .h1 {
    font-size: 2.5rem; }
@@ -1087,8 +1093,8 @@
    pointer-events: none; }
 
  .btn-primary {
-   color: #fff;
-   background-color: #8E8D8A;
+   color: #2F3C7E;
+   background-color: #FBEAEB;
    border-color: #8E8D8A;
    padding: 0.25rem, 0.25rem;
    font-size: 1rem;
@@ -2163,6 +2169,7 @@
    list-style: none; }
 
  .nav-link {
+   color: #fff;
    display: block;
    padding: 0.5rem 1rem; }
    .nav-link:hover, .nav-link:focus {
@@ -2218,6 +2225,7 @@
    display: block; }
 
  .navbar {
+   color: #fff;
    position: relative;
    display: flex;
    flex-wrap: wrap;
@@ -2512,6 +2520,7 @@
    padding: 1.25rem; }
 
  .card-title {
+   color: #7e7a76;
    justify-content: center;
    margin-bottom: 0.75rem; }
 
@@ -2868,7 +2877,7 @@
    margin-bottom: 2rem;
    margin-left: 2rem;
    margin-right: 2rem;
-   background-color: #EAE7DC;
+   background-color: #FBEAEB;
    border-radius: 0.1rem; }
    @media (min-width: 576px) {
      .jumbotron {
@@ -3022,7 +3031,7 @@
 
  .list-group-item-action {
    width: 100%;
-   color: #495057;
+   color: #7e7a76;
    text-align: inherit; }
    .list-group-item-action:hover, .list-group-item-action:focus {
      color: #495057;
@@ -3037,7 +3046,7 @@
    display: block;
    padding: 0.75rem 1.25rem;
    margin-bottom: -1px;
-   background-color: #EAE7DC;
+   background-color: #fff;
    border: 1px none rgba(0, 0, 0, 0.125); }
    .list-group-item:first-child {
      border-top-left-radius: 0.25rem;
@@ -3070,7 +3079,7 @@
    border-bottom: 0; }
 
  .list-group-item-primary {
-   color: #182226;
+   color: #7e7a76-gr;
    background-color: #c5cacc; }
    .list-group-item-primary.list-group-item-action:hover, .list-group-item-primary.list-group-item-action:focus {
      color: #182226;
@@ -3756,7 +3765,7 @@
    background-color: #c2380a !important; }
 
  .bg-light {
-   background-color: #D8C3A5
+   background-color: #2F3C7E
     !important; }
 
  a.bg-light:hover, a.bg-light:focus,

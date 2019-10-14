@@ -1,10 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Event from "./Event"
-<<<<<<< HEAD
 import LinkedIn from "./LI-In-Bug.png"
-=======
->>>>>>> 2134e1ebfa4eae08b580a00c760759e7642f69ce
 import { Card, CardLink, CardGroup, CardBody, CardImg, CardTitle, CardText, CardDeck, CardSubtitle, CardBodyNav, Navbar, NavItem, NavLink, NavbarBrand, Jumbotron, Container, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap'
 
 const items = [
@@ -114,8 +111,8 @@ class Home extends React.Component {
         </Jumbotron>
 
         <Jumbotron>
-          <h1>THIS IS OUR HOME PAGE</h1>
-          <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
+          
+          <h2>Get Down brings energy and liveliness to the general public by connecting them through events in real time.</h2>
         </Jumbotron>
 
         <Jumbotron>

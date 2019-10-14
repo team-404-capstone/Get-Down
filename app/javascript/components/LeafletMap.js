@@ -25,13 +25,13 @@ export default class MyMap extends Component{
       }
   }
   addMarker(addrs){
-    this.setState({markers: [...this.state.markers,[addrs.latLng.y, addrs.latLng.x, addrs.name, addrs.time, addrs.date]]})
+    this.setState({markers: [...this.state.markers,[addrs.latLng.y, addrs.latLng.x, addrs.name, addrs.time, addrs.date, addrs.id]]})
     console.log(addrs)
   }
 
   componentDidUpdate(prevProps){
     const { events } = this.props
-    const addresses = events.map(function(item) { return {address: item.address, name: item.name, time: item.time, date: item.date}
+    const addresses = events.map(function(item) { return {address: item.address, name: item.name, time: item.time, date: item.date, id: item.id}
     })
     const provider = new OpenStreetMapProvider()
     console.log(addresses)
@@ -40,7 +40,7 @@ export default class MyMap extends Component{
         return provider.search({
           query: address.address
         }).then((result)=>{
-          this.addMarker({latLng: result[0], name: address.name, time: address.time, date: address.date})
+          this.addMarker({latLng: result[0], name: address.name, time: address.time, date: address.date, id: address.id})
           return result[0]
         })
       })
@@ -119,6 +119,8 @@ export default class MyMap extends Component{
                       {"Time:"+ " " + markers[3]}
                     <br />
                       {"Date:"+ " " + markers[4]}
+                    <br />
+                      <a style={{color: "black"}} href={`/ViewEvent/${markers[5]}`}>Event Details</a>
                   </Popup>
                   </Marker>
               )

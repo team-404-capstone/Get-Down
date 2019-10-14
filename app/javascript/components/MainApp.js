@@ -23,7 +23,7 @@ class MainApp extends React.Component {
       comments: []
     }
     this.getEvent()
-    
+
   }
 
                   // =========================================== EVENT METHODS
@@ -97,8 +97,8 @@ class MainApp extends React.Component {
       })
     }
 
-               // ========================================== ATTEND METHODS  
-               
+               // ========================================== ATTEND METHODS
+
    getAttend = (id) => {
       return fetch(`../attends?event_id=${id}`)
       .then(resp => {
@@ -108,7 +108,7 @@ class MainApp extends React.Component {
         this.setState({attends})
       })
     }
-  
+
     createAttend = (id) => {
       return fetch('/attends',{
         method: 'POST',
@@ -123,7 +123,7 @@ class MainApp extends React.Component {
             }
       })
     }
-    
+
     deleteAttend = (id) => {
       return fetch(`/attends/${id}`, {
         method: 'DELETE'
@@ -135,9 +135,9 @@ class MainApp extends React.Component {
         }
       })
     }
-        
+
       // ========================================= COMMENT METHODS
-  
+
   getComment = (id) => {
      return fetch(`../comments?event_id=${id}`)
       .then(resp => {
@@ -146,8 +146,8 @@ class MainApp extends React.Component {
       .then(comments => {
         this.setState({comments})
       })
-  }   
-  
+  }
+
   createComment = (comment) => {
     return fetch('/comments',{
       method: 'POST',
@@ -163,7 +163,7 @@ class MainApp extends React.Component {
       }
     })
   }
-  
+
   deleteComment = (id) => {
       return fetch(`/comments/${id}`, {
         method: 'DELETE'
@@ -192,14 +192,14 @@ class MainApp extends React.Component {
       getComment,
       createComment,
       deleteComment
-      
+
     } = this.props
 
     return (
       <React.Fragment>
         <BrowserRouter>
           <Navbar >
-            <NavbarBrand href="/"><h1>Get Down</h1></NavbarBrand>
+            <NavbarBrand href="/"><h1 style={{color: "#fff"}}>Get Down</h1></NavbarBrand>
               <Nav>
                 <NavItem>
                   <NavLink href ="/">Home</NavLink>
@@ -236,9 +236,9 @@ class MainApp extends React.Component {
                 <ViewEvent {...routeProps}
                   events={this.state.events}
                   attends={this.state.attends}
-                  showEvent={this.showEvent} 
-                  createAttend={this.createAttend} 
-                  deleteAttend={this.deleteAttend} 
+                  showEvent={this.showEvent}
+                  createAttend={this.createAttend}
+                  deleteAttend={this.deleteAttend}
                   viewEvent={this.viewEvent}
                   getAttend={this.getAttend}
                   logged_in={this.props.logged_in}
@@ -254,7 +254,10 @@ class MainApp extends React.Component {
           <Route path = '/leafletmap'
             render = {(routeProps) => {
             return(
-              <MyMap events={this.state.events}/>
+              <MyMap {...routeProps}
+                events={this.state.events}
+                viewEvent = {this.viewEvent}
+              />
             )
            }
           }/>
@@ -262,14 +265,14 @@ class MainApp extends React.Component {
           <Route path = '/Event'
             render = {(routeProps) => {
             return(
-              <Event {...routeProps} 
-                events={this.state.events} 
-                getAttend={this.state.getAttend} 
-                deleteEvent = {this.deleteEvent} 
-                editEvent = {this.editEvent}  
-                viewEvent = {this.viewEvent}  
-                createEvent = {this.createEvent} 
-                sign_in_route={this.props.sign_in_route} 
+              <Event {...routeProps}
+                events={this.state.events}
+                getAttend={this.state.getAttend}
+                deleteEvent = {this.deleteEvent}
+                editEvent = {this.editEvent}
+                viewEvent = {this.viewEvent}
+                createEvent = {this.createEvent}
+                sign_in_route={this.props.sign_in_route}
                 sign_out_route={this.props.sign_out_route}
                 current_user={this.props.current_user}
                 current_user_id={this.props.current_user_id}
@@ -323,7 +326,7 @@ class MainApp extends React.Component {
           <footer className="bg-light text-black mt-4">
               <div className="container-fluid py-3">
                   <div className="row">
-                      <div className="col-md-3 text-center small align-self-end">©2019 Team_404</div>
+                      <div className="col-md-3 text-center small align-self-end" style={{color:"#fff"}}>©2019 Team_404</div>
                   </div>
               </div>
           </footer>

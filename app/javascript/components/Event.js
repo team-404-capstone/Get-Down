@@ -49,7 +49,7 @@ class Event extends React.Component {
                    <Button style={{ backgroundColor: "#fff"}} href = {`/ViewEvent/${event.id}`} onClick = {() => viewEvent(event.id)}>View Event</Button>
                    <br/>
                    <br/>
-                       <CardTitle>{event.name}</CardTitle><br/>
+                       <CardTitle><h4>{event.name}</h4></CardTitle><br/>
                          <CardText>DATE: {event.date}</CardText><br/>
                          <CardText>TIME: {event.time}</CardText><br/>
                          <CardText>ABOUT: {event.description}</CardText><br/>
@@ -57,7 +57,6 @@ class Event extends React.Component {
 
 
                         <center>
-
                             { event.user_id === current_user_id &&
                               <div>
                                 <Button style={{ backgroundColor: "#fff"}} href = {`/EditEvent/${event.id}`}>Edit Event</Button>
@@ -67,6 +66,7 @@ class Event extends React.Component {
                                   deleteEvent(event.id)}>Delete Event</Button>
                               </div>
                           }
+
                           </center>
                           </div>
                    </Card>

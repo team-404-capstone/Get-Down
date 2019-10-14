@@ -86,7 +86,6 @@ export default class MyMap extends Component{
       deleteEvent,
       editEvent
     } = this.props
-    console.log(this.state.markers)
     return(
       <div>
         <center>

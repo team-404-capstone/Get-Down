@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Event from "./Event"
-import LinkedIn from "./app/assets/images/LI-In-Bug.png"
 import { Card, CardLink, CardGroup, CardBody, CardImg, CardTitle, CardText, CardDeck, CardSubtitle, CardBodyNav, Navbar, NavItem, NavLink, NavbarBrand, Jumbotron, Container, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap'
 
 const items = [

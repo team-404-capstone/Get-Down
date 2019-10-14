@@ -10,10 +10,7 @@ ______________
 _______________
 
 PURPOSE
-
-Get Down was created in order to get people with alike minds/hobbies
-To get together in groups or to simply sign up to an event.
-
+Get Down brings energy and liveliness to the general public by connecting them through events in real time.
 ________________
 
 SKILLS GAINED

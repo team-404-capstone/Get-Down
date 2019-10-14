@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Event from "./Event"
-
-import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Jumbotron, Container, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap'
+import LinkedIn from "/Users/jonathan/Desktop/Get-Down/app/assets/images/LI-In-Bug.png"
+import { Card, CardLink, CardGroup, CardBody, CardImg, CardTitle, CardText, CardDeck, CardSubtitle, CardBodyNav, Navbar, NavItem, NavLink, NavbarBrand, Jumbotron, Container, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap'
 
 const items = [
   {
@@ -22,8 +22,6 @@ const items = [
       altText: 'Slide 3',
     }
 ];
-
-
 
 class Home extends React.Component {
     constructor(props) {
@@ -69,26 +67,30 @@ class Home extends React.Component {
     } = this.props
 
     const { activeIndex } = this.state;
+    const icon = { width: "15%", height: "20%"};
+    const margin = { textAlign: "justified", margin: "0 13%" };
+    const text = { textAlign: "center" };
+    const card = { width: "18rem" };
 
-        const slides = items.map((item) => {
-          return (
-            <CarouselItem
-              onExiting={this.onExiting}
-              onExited={this.onExited}
-              key={item.src}
-              className="img-fluid"
-            >
-              <img style={{height:"60%", width:"60%"}} src={item.src} alt={item.altText}
-              className="img-fluid"
-              />
-              <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-            </CarouselItem>
-          );
-        });
-
+    const slides = items.map((item) => {
+      return (
+        <CarouselItem
+          onExiting={this.onExiting}
+          onExited={this.onExited}
+          key={item.src}
+          className="img-fluid"
+        >
+        <img style={{height:"60%", width:"60%"}} src={item.src} alt={item.altText}
+          className="img-fluid"
+        />
+        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+        </CarouselItem>
+      );
+    });
 
     return (
-      <React.Fragment>
+
+    <React.Fragment>
       <Container>
       <br/>
       <br/>
@@ -107,19 +109,93 @@ class Home extends React.Component {
         </Carousel>
         </center>
         </Jumbotron>
+
         <Jumbotron>
           <h1>THIS IS OUR HOME PAGE</h1>
           <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
         </Jumbotron>
+
         <Jumbotron>
-          <h1>THIS WILL HOLD OUR ABOUT US SECTION</h1>
-          <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
+          <br />
+          <h2 style={text}>TEAM 404</h2>
+          <br/>
+          <hr style={margin} />
+          <br/>
+          <CardGroup style={{ margin: "0 12%" }}>
+            <Card style={card}>
+              <CardImg top width="100%" src="https://media.licdn.com/dms/image/C5603AQHr69lDQBHzBA/profile-displayphoto-shrink_800_800/0?e=1576713600&v=beta&t=SZyKwtT9wGLN-IAGULXrlcHmFFn7LdwTjjSCD3BOqbY" />
+              <CardBody>
+                <CardTitle>Adam Cruse</CardTitle>
+                <CardSubtitle>Full-Stack Developer.</CardSubtitle>
+                <br/>
+                <CardLink href="https://github.com/adamcruser" target="blank">
+                  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" style={icon} />
+                </CardLink>
+                <CardLink href="https://www.linkedin.com/in/adamcruser/" target="blank">
+                  <img src={LinkedIn} style={icon} />
+                </CardLink>
+              </CardBody>
+            </Card>
+            <Card style={card}>
+              <CardImg top width="100%" src="https://media.licdn.com/dms/image/C5603AQFuaJGVHjSAzA/profile-displayphoto-shrink_800_800/0?e=1576713600&v=beta&t=Kdv5dZLNOc-_AkhfFXWx15sbblyoaOP6rzTC07S94Ts" />
+              <CardBody>
+                <CardTitle>Jonathon Arbona</CardTitle>
+                <CardSubtitle>Full-Stack Developer.</CardSubtitle>
+                <br/>
+                <CardLink href="https://github.com/jnarbona91" target="blank">
+                  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" style={icon} />
+                </CardLink>
+                <CardLink href="https://www.linkedin.com/in/jonarbona/" target="blank">
+                  <img src={LinkedIn} style={icon} />
+                </CardLink>
+              </CardBody>
+            </Card>
+            <Card style={card}>
+              <CardImg top width="100%" src="https://avatars3.githubusercontent.com/u/52896948?s=460&v=4" />
+              <CardBody>
+                <CardTitle>Conor Preston</CardTitle>
+                <CardSubtitle>Full-Stack Developer.</CardSubtitle>
+                <br/>
+                <CardLink href="https://github.com/conorpreston13" target="blank">
+                  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" style={icon} />
+                </CardLink>
+                <CardLink href="https://www.linkedin.com/in/conorpreston/" target="blank">
+                  <img src={LinkedIn} style={icon} />
+                </CardLink>
+              </CardBody>
+            </Card>
+            <Card style={card}>
+              <CardImg top width="100%" src="https://avatars3.githubusercontent.com/u/36896050?s=460&v=4" />
+              <CardBody>
+                <CardTitle>Jon Simpson</CardTitle>
+                <CardSubtitle>Full-Stack Developer.</CardSubtitle>
+                <br/>
+                <CardLink href="https://github.com/jonbsimp" target="blank">
+                  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" style={icon} />
+                </CardLink>
+                <CardLink href="https://www.linkedin.com/in/jonbsimp/" target="blank">
+                  <img src={LinkedIn} style={icon} />
+              </CardLink>
+              </CardBody>
+            </Card>
+            <Card style={card}>
+              <CardImg top width="100%" src="https://media.licdn.com/dms/image/C4D03AQENHSP_eFipew/profile-displayphoto-shrink_800_800/0?e=1576713600&v=beta&t=PZY2ovuq6xn8RIw_m_6b3dTZ1pd8YiMBL-YgC6o95XU" />
+              <CardBody>
+                <CardTitle>Katya Neumann</CardTitle>
+                <CardSubtitle>Full-Stack Developer.</CardSubtitle>
+                <br/>
+                <CardLink href="https://github.com/Blackcatwhitesocks" target="blank">
+                  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" style={icon} />
+                </CardLink>
+                <CardLink href="https://www.linkedin.com/in/katyaneumann/" target="blank">
+                  <img src={LinkedIn} style={icon} />
+                </CardLink>
+              </CardBody>
+            </Card>
+          </CardGroup>
         </Jumbotron>
-
-
       </Container>
-      </React.Fragment>
-
+    </React.Fragment>
 
     );
   }

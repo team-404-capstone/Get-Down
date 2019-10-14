@@ -92,7 +92,7 @@ class ViewEvent extends React.Component {
               { attends.map((attend, index) => {
                 return(
                   <div key = {index}>
-                     <ListGroupItem>{attend.user_email}
+                     <ListGroupItem>{attend.user_username}
                        { attend.user_id === current_user_id &&
                           <div>
                              <Button color = 'danger' onClick={e =>
@@ -120,7 +120,7 @@ class ViewEvent extends React.Component {
             { comments.map((comment, index) => {
               return(
               <div key = {index}>
-                <ListGroupItem>{comment.user_email} says: {comment.comment}
+                <ListGroupItem>{comment.user_username} says: {comment.comment}
                 {console.log(comment.comment)}
                   { comment.user_id === current_user_id && 
                     <div>

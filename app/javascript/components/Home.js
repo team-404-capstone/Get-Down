@@ -107,8 +107,9 @@ class Home extends React.Component {
         </Jumbotron>
 
         <Jumbotron>
-          
-          <h2>Get Down brings energy and liveliness to the general public by connecting them through events in real time.</h2>
+
+          <h2 id="jumbotron-message">Get Down brings energy and liveliness to the general public by connecting them through events in real time.
+          </h2>
         </Jumbotron>
 
         <Jumbotron>
@@ -117,7 +118,7 @@ class Home extends React.Component {
           <br/>
           <hr style={margin} />
           <br/>
-          <CardGroup style={{ margin: "0 12%" }}>
+          <CardGroup style={{ margin: "0 12%" }} id="card-group">
             <Card style={card}>
               <CardImg top width="100%" src="https://media.licdn.com/dms/image/C5603AQHr69lDQBHzBA/profile-displayphoto-shrink_800_800/0?e=1576713600&v=beta&t=SZyKwtT9wGLN-IAGULXrlcHmFFn7LdwTjjSCD3BOqbY" />
               <CardBody>
@@ -198,4 +199,3 @@ class Home extends React.Component {
 }
 
 export default Home
-

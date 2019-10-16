@@ -7,22 +7,22 @@ import { Redirect } from "react-router-dom"
 class EditEvent extends React.Component {
   constructor(props){
     super(props)
-    this.state = {  
+    this.state = {
     eventAttrs: {},
     editSuccess: false
     };
   }
-  
+
   componentDidMount() {
     this.getEvent();
   }
-  
+
   componentDidUpdate(prevProps) {
     if(prevProps.match.params.id != this.props.match.params.id) {
       this.getEvent();
     }
   }
-  
+
   localSubmit = e => {
     e.preventDefault();
     const { editEvent } = this.props;
@@ -32,25 +32,25 @@ class EditEvent extends React.Component {
     window.location.href = '/Event'
     });
   };
-  
+
   handleSubmit = event => {
     this.setState({ event });
   };
-  
+
   onChange = e => {
     const { eventAttrs } = this.state;
     const { name, value } = e.target;
     eventAttrs[name] = value;
     this.setState({ eventAttrs });
   };
-  
+
   getEvent() {
     const { showEvent } = this.props;
     showEvent(this.props.match.params.id).then(response => {
       this.setState({ eventAttrs: response });
     });
   }
-  
+
   render () {
     const { eventAttrs, editSuccess, event } = this.state;
     const {
@@ -63,7 +63,7 @@ class EditEvent extends React.Component {
       <React.Fragment>
       {editSuccess && <Redirect to="/Event" />}
       <Container>
-          
+
             <br/>
             <br/>
             <Jumbotron>
@@ -71,23 +71,23 @@ class EditEvent extends React.Component {
                <h1>Edit Event</h1>
                 <Form onSubmit={this.localSubmit}>
                   <FormGroup>
-                    <Label for="name">Event Name</Label>
+                    <Label style={{color: "black"}}  for="name">Event Name</Label>
                     <Input onChange = { this.onChange } type="text" value={eventAttrs.name} name="name" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="date">Date</Label>
+                    <Label style={{color: "black"}}  for="date">Date</Label>
                     <Input onChange = { this.onChange } type="date" value={eventAttrs.date} name="date" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="time">Time</Label>
+                    <Label style={{color: "black"}}  for="time">Time</Label>
                     <Input onChange = { this.onChange } type="text" value={eventAttrs.time} name="time" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="address">Address</Label>
+                    <Label style={{color: "black"}}  for="address">Address</Label>
                     <Input onChange = { this.onChange } type="text" value={eventAttrs.address} name="address" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="description">Description</Label>
+                    <Label style={{color: "black"}}  for="description">Description</Label>
                     <Input onChange = { this.onChange } type="textarea" value={eventAttrs.description} name="description" />
                   </FormGroup>
                   <Button onClick = {this.localSubmit} >Edit Event</Button>

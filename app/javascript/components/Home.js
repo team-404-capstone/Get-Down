@@ -63,7 +63,7 @@ class Home extends React.Component {
     } = this.props
 
     const { activeIndex } = this.state;
-    const icon = { width: "15%", height: "20%"};
+    const icon = { width: "15%" };
     const margin = { textAlign: "justified", margin: "0 13%" };
     const text = { textAlign: "center" };
     const card = { width: "18rem" };
@@ -107,9 +107,10 @@ class Home extends React.Component {
         </Jumbotron>
 
         <Jumbotron>
-
+         <center>
           <h2 id="jumbotron-message">Get Down brings energy and liveliness to the general public by connecting them through events in real time.
           </h2>
+         </center>
         </Jumbotron>
 
         <Jumbotron>

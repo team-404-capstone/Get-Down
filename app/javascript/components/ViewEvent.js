@@ -67,11 +67,11 @@ class ViewEvent extends React.Component {
              <div>
 
 
-                  <CardTitle id="name">Event: {this.state.eventAttrs.name}</CardTitle>
-                  <CardText id="date">Date: {this.state.eventAttrs.date}</CardText>
-                  <CardText id="time">Time: {this.state.eventAttrs.time}</CardText>
-                  <CardText id="address">Address: {this.state.eventAttrs.address}</CardText>
-                  <CardText id="description">Description: {this.state.eventAttrs.description}</CardText>
+                  <CardTitle>Event: {this.state.eventAttrs.name}</CardTitle>
+                  <CardText>Date: {this.state.eventAttrs.date}</CardText>
+                  <CardText>Time: {this.state.eventAttrs.time}</CardText>
+                  <CardText>Address: {this.state.eventAttrs.address}</CardText>
+                  <CardText>Description: {this.state.eventAttrs.description}</CardText>
 
 
                       { logged_in &&
@@ -113,7 +113,7 @@ class ViewEvent extends React.Component {
           <div>
             <Form>
                 <FormGroup>
-                  <Label for="comment">Comment</Label>
+                  <Label style={{color: "black"}} for="comment">Comment</Label>
                   <Input onChange = { this.onChange }  type="string" name="comment"placeholder="Enter Comment Here" />
                 </FormGroup>
                 <Button color="primary" onClick = {this.localSubmit} >Post Comment</Button>

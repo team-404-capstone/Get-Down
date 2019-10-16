@@ -19,6 +19,8 @@ class Event extends React.Component {
       viewEvent
     } = this.props
 
+    const margin = { textAlign: "justified", margin: "0 13%" };
+
     return (
       <React.Fragment>
 
@@ -29,7 +31,7 @@ class Event extends React.Component {
           <Container>
           <center>
             <h1>Events</h1>
-
+             <hr style={margin} />
              <br/>
 
              { logged_in &&
@@ -39,7 +41,7 @@ class Event extends React.Component {
              }
             </center>
              <br/>
-             <br/>
+             
              <div>
               <CardGroup>
                 { events.map((event, index) => {

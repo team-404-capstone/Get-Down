@@ -16,6 +16,7 @@ PURPOSE
 
 Get Down brings energy and liveliness to the general public
 by connecting them through events in real time.
+______________
 
 SKILLS GAINED
 

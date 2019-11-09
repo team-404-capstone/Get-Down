@@ -9,7 +9,7 @@
           <div class="card-body d-flex flex-column align-items-start">
           <center>
             <h2 class="text-white">Log in</h2>
-            <a href="/">Home</a>
+
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field">
                 <%= f.label :email %><br />
@@ -33,7 +33,7 @@
               </div>
             <% end %>
             <br/>
-            <button class="actions"><a href="/">Home</a></button>
+            <button class="text-white" class="actions"><a href="/">Home</a></button>
             </center>
           </div>
         </div>

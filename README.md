@@ -2,20 +2,30 @@ GET DOWN
 ______________
 
 1.Purpose:
+
 2.Skills:
+
 3.Technology:
+
 4.Features:
+
 5.How to use:
-_______________
 
 PURPOSE
 
 Get Down brings energy and liveliness to the general public
 by connecting them through events in real time.
-________________
 
 SKILLS GAINED
-...
+
+Communication and Git in a group environement.
+
+A basic understanding of vanilla JavaScript including foundational principles and data types as well as DOM manipulation.
+
+Positioning in CSS using the values of relative, absolute, and fixed.
+
+Implementing an external API for Map/Geocoding usage.
+
 ________________
 
 TECHNOLOGY

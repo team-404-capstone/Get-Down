@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 config.hosts << "220db00e06b743f892409090cd4b49ea.vfs.cloud9.us-east-2.amazonaws.com"
 config.hosts << "quiet-peak-08707.herokuapp.com"
+config.hosts << "desolate-anchorage-56169.herokuapp.com"
   # Code is not reloaded between requests.
   config.cache_classes = true
 

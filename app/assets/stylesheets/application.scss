@@ -217,7 +217,7 @@
 
  label {
    display: inline-block;
-   color: #7e7a76;
+   color: #fff;
    margin-bottom: 0.5rem; }
 
  button {
@@ -1093,9 +1093,9 @@
    pointer-events: none; }
 
  .btn-primary {
-   color: #2F3C7E;
-   background-color: #FBEAEB;
-   border-color: #8E8D8A;
+    color: #212529;
+    background-color: #FBEAEB;
+    border-color: #F47B53;
    padding: 0.25rem, 0.25rem;
    font-size: 1rem;
    margin-left: 0.35rem;
@@ -1104,9 +1104,9 @@
    margin-bottom: 0.25rem;
    line-height: 1;}
    .btn-primary:hover {
-     color: #fff;
-     background-color: #202c33;
-     border-color: #1b262b; }
+      color: #7e7a76;
+      background-color: #FBEAEB;
+      border-color: black; }
    .btn-primary:focus, .btn-primary.focus {
      box-shadow: 0 0 0 0.2rem rgba(47, 65, 74, 0.5); }
    .btn-primary.disabled, .btn-primary:disabled {
@@ -1124,12 +1124,12 @@
 
  .btn-secondary {
    color: #212529;
-   background-color: #F47B53;
+   background-color: #FBEAEB;
    border-color: #F47B53; }
    .btn-secondary:hover {
-     color: #fff;
-     background-color: #f25f2f;
-     border-color: #f15623; }
+     color: #7e7a76;
+     background-color: #FBEAEB;
+     border-color: black; }
    .btn-secondary:focus, .btn-secondary.focus {
      box-shadow: 0 0 0 0.2rem rgba(244, 123, 83, 0.5); }
    .btn-secondary.disabled, .btn-secondary:disabled {
@@ -2173,6 +2173,9 @@
    display: block;
    padding: 0.5rem 1rem; }
    .nav-link:hover, .nav-link:focus {
+     color: black;
+     border-radius: 1rem;
+     background-color: #fff;
      text-decoration: none; }
    .nav-link.disabled {
      color: #6c757d; }

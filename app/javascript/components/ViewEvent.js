@@ -113,7 +113,7 @@ class ViewEvent extends React.Component {
           <div>
             <Form>
                 <FormGroup>
-                  <Label for="comment">Comment</Label>
+                  <Label style={{color: "black"}} for="comment">Comment</Label>
                   <Input onChange = { this.onChange }  type="string" name="comment"placeholder="Enter Comment Here" />
                 </FormGroup>
                 <Button color="primary" onClick = {this.localSubmit} >Post Comment</Button>

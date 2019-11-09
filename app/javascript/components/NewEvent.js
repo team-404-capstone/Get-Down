@@ -51,24 +51,24 @@ class NewEvent extends React.Component {
               <Container>
               <Form>
                 <FormGroup>
-                  <Label for="name">Event Name</Label>
-                  <Input onChange = { this.onChange }  type="string" name="name"placeholder="Event Name" />
+                  <Label style={{color: "black"}} for="name">Event Name</Label>
+                  <Input onChange = { this.onChange } id="name"  type="string" name="name"placeholder="Event Name" />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="date">Date</Label>
-                  <Input onChange = { this.onChange }  type="date" name="date" placeholder="Date" />
+                  <Label style={{color: "black"}} for="date">Date</Label>
+                  <Input onChange = { this.onChange } id="date"  type="date" name="date" placeholder="Date" />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="time">Time</Label>
-                  <Input onChange = { this.onChange }  type="text" name="time" placeholder="Time" />
+                  <Label style={{color: "black"}} for="time">Time</Label>
+                  <Input onChange = { this.onChange }  id="time" type="text" name="time" placeholder="Time" />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="description">Description</Label>
-                  <Input onChange = { this.onChange }  type="text" name="description" placeholder="Description" />
+                  <Label style={{color: "black"}}  for="description">Description</Label>
+                  <Input onChange = { this.onChange } id="description" type="text" name="description" placeholder="Description" />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="address">Address</Label>
-                  <Input onChange = { this.onChange }  type="address" name="address" placeholder="Enter address" />
+                  <Label style={{color: "black"}} for="address">Address</Label>
+                  <Input onChange = { this.onChange } id="address" type="address" name="address" placeholder="Enter address" />
                 </FormGroup>
                 <Button onClick = {this.localSubmit} >Create</Button>
 
